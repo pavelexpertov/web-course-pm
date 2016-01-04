@@ -3,7 +3,7 @@
     if(!isset($_SESSION['user'])){ ?>
 
     <a href='#'>Login (click)</a>
-    
+
     <?php
 } else { ?>
 
