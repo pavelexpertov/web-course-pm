@@ -6,6 +6,7 @@ Remember, it will be used with conjunction with
 session file to make the connection and start
 a session*/
 
+// This is login for my linux machine
 $hostname = "localhost";
 $username = "root";
 $password = "linkinpark";
