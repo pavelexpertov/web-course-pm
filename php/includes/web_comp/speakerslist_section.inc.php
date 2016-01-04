@@ -13,9 +13,16 @@
 
     while($speaker = $resultSpeakersList->fetch_assoc())
     {
+        $link = "'speaker_info.php?id=" . "{$speaker['id']}'";
  ?>
         <div class="speaker-box">
-            <h3><?php echo $speaker['fname'] . " " . $speaker['lname']; ?> </h3>
+            <h3>
+            <a href= <?php echo $link; ?>>
+            <?php
+            echo $speaker['fname'] . " " . $speaker['lname'];
+            ?>
+            </a>
+            </h3>
         </div>
     <?php
     } //End of the while loop ?>
