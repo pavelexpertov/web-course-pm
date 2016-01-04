@@ -11,10 +11,12 @@
 
     $result->bind_param('i', $_GET['id']);
     $result->execute();
-    $result->bind_result($fname, $lname, $job, $desc);
+    $result->bind_result($fname, $lname, $job, $descr);
     $result->fetch();
     $result->close();
-
-
     ?>
+
+    <h1><?php echo "$fname" . " " . "$lname"; ?></h1>
+    <p><?php echo "$job"; ?> </p>
+    <p><?php echo "$descr"; ?> </p>
 </section>
