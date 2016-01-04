@@ -4,15 +4,10 @@
     include 'php/conn_sess/db_n_sess.inc.php';
     //Adding head element
     include 'php/web_comp/head_element.func.php';
+    include 'php/web_comp/body_element.func.php';
     placeHeadElement("List Of Speakers");
+
+    $includeList[] = 'php/includes/sections/header_section.inc.php';
+    $includeList[] = 'php/includes/sections/speakers_list_section.inc.php';
+    placeBodyElement($includeList);
 ?>
-<body>
-    <div id="mainwrapper">
-        <?php
-            //Adding header element
-            include 'php/includes/sections/header_section.inc.php';
-            //Adding section designated for speakers_list
-            include 'php/includes/sections/speakers_list_section.inc.php';
-        ?>
-    </div>
-</body>

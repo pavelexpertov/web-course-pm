@@ -8,6 +8,7 @@
 <body>
     <div id="mainwrapper">
     <?php
+        include "php/conn_sess/dbconn.inc.php";
         foreach($includeList as $include)
         {
             include $include;
@@ -17,4 +18,4 @@
 </body>
 </html>
 
-<?php }//End of the palce bodyElement?>
+<?php }//End of the palce bodyEment?>
