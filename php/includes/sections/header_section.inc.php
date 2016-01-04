@@ -4,7 +4,7 @@
 - navigation link to different parts of the sites
 - a simple search bar (which needs to be implemented as an include) -->
 <header>
-    <img id="header_logo"></img>
+    <img id="header_logo">
     <nav>
         <ul>
             <li> <a href="#">Home</a></li>
@@ -14,6 +14,8 @@
     </nav>
 
     <!-- The login section goes here -->
+    <?php include 'php/includes/web_comp/login_small_section.inc.php'; ?>
     <!-- The simple search bar goes here -->
+    <?php include 'php/includes/web_comp/simple_searchbar.inc.php'; ?>
 
 </header>
