@@ -6,6 +6,7 @@
         //including introduction section
         //include 'php/includes/web_comp/introduction_section.inc.php';
         //including speakers list section
+        include 'php/includes/web_comp/speakerslist_section.inc.php';
     ?>
 
 </div>
