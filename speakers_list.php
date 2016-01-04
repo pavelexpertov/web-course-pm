@@ -12,7 +12,7 @@
             //Adding header element
             include 'php/includes/sections/header_section.inc.php';
             //Adding section designated for speakers_list
-            //include 'php/includes/sections/index_section.inc.php';
+            include 'php/includes/sections/speakers_list_section.inc.php';
         ?>
     </div>
 </body>
