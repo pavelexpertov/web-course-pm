@@ -17,7 +17,10 @@ function placeEventResult(&$queryResult)
 
 <div class='eventresult'>
     <h3>
-        <?php echo $name; ?>
+        <?php $elink = "event_info.php?eid=$eveid"; ?>
+        <a href='<?php echo $elink; ?>'>
+            <?php echo $name; ?>
+        </a>
     </h3>
 
     <ul>
