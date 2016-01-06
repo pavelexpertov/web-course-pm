@@ -6,11 +6,13 @@
 function placeEventResult(&$queryResult)
 {
     $queryResult->bind_result($eveid, $name, $etype, $date, $stime, $ftime, $town, $country, $price);
-    echo "the result_events function has been called ";
+    // echo "the result_events function has been called ";
     // $queryResult->bind_result($eveid, $name);
+    $queryResult->store_result();
+    $numRows = $queryResult->num_rows;
+    // echo "$numRows";
 
     while($queryResult->fetch()) {
-        echo "reached the while loop";
 ?>
 
 <div class='eventresult'>

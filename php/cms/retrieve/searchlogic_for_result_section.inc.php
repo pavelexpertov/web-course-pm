@@ -11,29 +11,21 @@
     //These variables are used so I can customise the query easily
     //in mulitple if conditions
     $fields = " eveid, evename, etypename, date, stime, ftime, town, country, price";
-    // $fields = " eveid, evename";
     $view = "search_n_event_view";
 
     if(isset($_GET['simplesearch']))
     {
-        echo "{$_GET['simplesearch']}";
-        echo "It worked, it worked!!\n";
 
-        // $query = "select $fields from $view where eveid = ?";
-        // $query = "select $fields from $view where evename = ?";
-        $query = "select $fields from $view where evename like ? or evedescr like ?";
-                        echo "\n$query";
+        $query = "select $fields from $view
+                  where evename like ? or evedescr like ?";
         $resultEvents = $mysqli->prepare($query);
         if($resultEvents == false)
-        {
+        { //This is used to check errors upon the query
             echo "oooops, something went wrong";
             echo $resultEvents->error_list;
         }
 
-        // $getmethod = "'%" . $_GET['simplesearch'] . "%'";
-        // $simplesearchq = '%' . 'test' . '%';
         $simplesearchq = '%' . $_GET['simplesearch'] . '%';
-        echo "\ngetmethod = $simplesearchq";
 
         $resultEvents->bind_param('ss', $simplesearchq, $simplesearchq);
         $resultEvents->execute();
