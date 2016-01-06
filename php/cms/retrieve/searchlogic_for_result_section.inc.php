@@ -18,9 +18,13 @@
         echo "{$_GET['simplesearch']}";
         echo "It worked, it worked!!";
 
-        $query = "select $fields from $view where eveid = ?";
+        // $query = "select $fields from $view where eveid = ?";
+        // $query = "select $fields from $view where evename = ?";
+        $query = "select $fields from $view where evename
+                        like '%?%'";
+                        //echo $query;
         $resultEvents = $mysqli->prepare($query);
-        $resultEvents->bind_param('i', $_GET['simplesearch']);
+        $resultEvents->bind_param('s', $_GET['simplesearch']);
         $resultEvents->execute();
 
         placeEventResult($resultEvents);
