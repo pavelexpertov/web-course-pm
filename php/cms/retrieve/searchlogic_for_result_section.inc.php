@@ -6,7 +6,7 @@
     // include 'php/web_comp/result_events.func.php';
     //The variable below will be passed to a function, which will
     //use it to output values.
-    $resultEvents = 'sdf';
+    $resultEvents = NULL;
 
     //These variables are used so I can customise the query easily
     //in mulitple if conditions
