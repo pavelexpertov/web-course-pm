@@ -3,7 +3,7 @@
 // query that came either from simple or advanced search bar.
 
     //The include gives a function that will output the result of the events.
-    include 'php/web_comp/result_events.func.php';
+    // include 'php/web_comp/result_events.func.php';
     //The variable below will be passed to a function, which will
     //use it to output values.
     $resultEvents = 'sdf';
@@ -31,7 +31,7 @@
         $resultEvents->execute();
 
 
-        placeEventResult($resultEvents);
+        // placeEventResult($resultEvents);
     }
     else
     {
