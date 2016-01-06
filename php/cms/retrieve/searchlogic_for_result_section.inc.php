@@ -11,7 +11,7 @@
     //These variables are used so I can customise the query easily
     //in mulitple if conditions
     $fields = " eveid, evename, etypename, date, stime, ftime, town, country, price";
-    $view = "search_n_event_view";
+    $view = "search_n_event_view2";
 
     if(isset($_GET['simplesearch']))
     {
