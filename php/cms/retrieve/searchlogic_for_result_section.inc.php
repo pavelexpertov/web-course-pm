@@ -22,10 +22,8 @@
         $resultEvents = $mysqli->prepare($query);
         $resultEvents->bind_param('i', $_GET['simplesearch']);
         $resultEvents->execute();
-        //$resultEvents->fetch();
 
         placeEventResult($resultEvents);
-        // echo "The result of the query is $name";
     }
     else
     {
