@@ -17,14 +17,9 @@
             // if(!isset($_SESSION['usr']) && !isset($_SESSION['pwd']))
             if(isset($_SESSION['err']))
             {
-                if($_SESSION['err'])
-                    echo "Opps an error happened! Try to login again maybe";
+                echo "{$_SESSION['err']}";
             }
-            if(isset($_SESSION['pwd_not_match']))
-            {
-                if($_SESSION['pwd_not_match'])
-                    echo "Username and password don't match. Try again?";
-            }
+
          ?>
     </div>
 
