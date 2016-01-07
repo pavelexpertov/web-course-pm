@@ -1,7 +1,7 @@
 <?php
     //This is for error reporting
-    // include '../../debug/turn_on_error_reporting.php';
     include '../../web_comp/place_sess_db_include.func.php';
+    include '../../obj/user.cs.php';
     $list = placeSDIncludes(2);
 
     foreach($list as $include)
@@ -9,8 +9,6 @@
         include $include;
     }
 
-    //This is for database stuff
-    // include '../../conn_sess/db_n_sess.inc.php';
     //Clear out the error variable
     if(isset($_SESSION['err']))
         unset($_SESSION['err']);
@@ -55,7 +53,11 @@
         exit();
     }
     else {
-        $_SESSION['err'] = "successfully loged in!!!.";
+        $userobj = new User;
+        $userobj->id = $usrid;
+        $userobj->usrname = $usrname;
+        $userobj->usrpwd = $usrpwd;
+        $_SESSION['usr'] = $userobj;
         header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
 
