@@ -5,9 +5,9 @@
 
 class User {
 
-    public id;
-    public usrname;
-    public usrpwd;
+    public $id;
+    public $usrname;
+    public $usrpwd;
 
 }
 

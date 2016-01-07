@@ -58,7 +58,7 @@
         $userobj->usrname = $usrname;
         $userobj->usrpwd = $usrpwd;
         $_SESSION['usr'] = $userobj;
-        header("Location: {$_SERVER['HTTP_REFERER']}");
+        header("Location: ../../../index.php");
         exit();
 
     }
