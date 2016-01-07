@@ -14,9 +14,9 @@
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
 
-        echo "errpath: " . "$errpath";
-        echo "dbpath: " . "$dbpath";
-        echo "sesspath: " . "$sesspath";
+        // echo "errpath: " . "$errpath";
+        // echo "dbpath: " . "$dbpath";
+        // echo "sesspath: " . "$sesspath";
 
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
