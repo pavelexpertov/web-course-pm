@@ -25,9 +25,7 @@
 
     $query = "select ID, Username, Password from Users where Username = ?";
     $querystmt = $mysqli->prepare($query);
-    $postquery= "'" . $_POST['usr'] . "'";
-    $querystmt->bind_param('i', $postquery);
-    // $querystmt->bind_param('i', $_POST['usr']);
+    $querystmt->bind_param('s', $_POST['usr']);
     if($querystmt == false){
         $_SESSION['err'] = "Some problem with prepared statement " . $querystmt->error_list;
         header("Location: {$_SERVER['HTTP_REFERER']}");
@@ -37,11 +35,10 @@
     //Checking for a number of queries
     $querystmt->store_result();
     $usr_exist = $querystmt->num_rows;
-    echo "number of queris" . $usr_exist . '<br>';
+
     if($usr_exist == 0)
     {
-        $_SESSION['err'] = "the values of usr_exit is $usr_exist";
-        // $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+        $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
         header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
     }
@@ -52,10 +49,16 @@
     if($_POST['pwd'] != $usrpwd)
     {
         $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
-        // header("Location: {$_SERVER['HTTP_REFERER']}");
+        header("Location: {$_SERVER['HTTP_REFERER']}");
         echo "usrpwd from post value is: {$_POST['pwd']} <br>";
         echo "usrpwd from query is: $usrpwd <br>";
         exit();
+    }
+    else {
+        $_SESSION['err'] = "successfully loged in!!!.";
+        header("Location: {$_SERVER['HTTP_REFERER']}");
+        exit();
+
     }
 
 
