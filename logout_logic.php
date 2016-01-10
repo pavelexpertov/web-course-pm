@@ -10,12 +10,7 @@
     //If the request is not from logged in user, redirect to original destination
     if(!isset($_SESSION['usr']))
     {
-        // header("Location: {$_SERVER['HTTP_REFERER']}");
-        echo $_SERVER['HTTP_REFERER'];
-        echo "Ehhhhhhhh, something went wrong, if you logged in and wanted to
-         log out, the condition must not have found the 'usr' variable in session";
-         echo "<br>";
-         print_r($_SESSION['usr']);
+        header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
     }
 

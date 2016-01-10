@@ -14,7 +14,6 @@
 
     <div class="error-section">
         <?php
-            // if(!isset($_SESSION['usr']) && !isset($_SESSION['pwd']))
             if(isset($_SESSION['err']))
             {
                 echo "{$_SESSION['err']}";
