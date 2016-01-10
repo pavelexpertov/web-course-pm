@@ -9,7 +9,7 @@
 
     <!-- <p>You logged in?</p> -->
     <h2> <?php echo $_SESSION['usr']->usrname; ?> </h2>
-    <a href=#> log out </a>
+    <a href='php/conn_sess/logout_logic.php'> log out </a>
 
     <?php }//End of the else clause?>
 </div>
