@@ -2,7 +2,7 @@
 //The purpose of the page is to collect some needed information before creating
 //an account and then create an account using the insert statement
 include '../../web_comp/place_sess_db_include.func.php';
-include '../../obj/user.cs.php';
+// include '../../obj/user.cs.php';
 $listOfIncludes = placeSDIncludes(2);
 foreach($listOfIncludes as $include)
     include $include;
