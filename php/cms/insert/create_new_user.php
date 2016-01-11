@@ -24,7 +24,7 @@ if($numOfQueries == 1)
 {
     $usrnamestmt->bind_result($existusrname);
     $usrnamestmt->close();
-    if($existusrname == $_SESSION['usrname'])
+    if($existusrname == $_POST['usrname'])
         $_SESSION['err'] = "The username already exists";
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
@@ -41,8 +41,9 @@ $query = "insert into Users(ID, Username, Password, Description)
           values(?, ?, ?, ?)";
 $insertstmt = $mysqli->prepare($query);
 $a = 0;
-$insertstmt->bind_param('isss', $a, $_SESSION['usrname'], $_SESSION['usrpwd'],
-                        $_SESSION['biodesc']);
+// $usrname = '"' . $_['usrname'] . '"';
+$insertstmt->bind_param('isss', $a, $_POST['usrname'], $_POST['usrpwd'],
+                        $_POST['biodesc']);
 if($insertstmt == false)
 {
     echo "Oppppps, error happened while inserting";
