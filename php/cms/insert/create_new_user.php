@@ -23,6 +23,7 @@ $numOfQueries = $usrnamestmt->num_rows;
 if($numOfQueries == 1)
 {
     $usrnamestmt->bind_result($existusrname);
+    $usrnamestmt->close();
     if($existusrname == $_SESSION['usrname'])
         $_SESSION['err'] = "The username already exists";
     header("Location: {$_SERVER['HTTP_REFERER']}");
