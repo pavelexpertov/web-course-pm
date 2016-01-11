@@ -3,6 +3,7 @@
     if(!isset($_SESSION['usr'])){ ?>
 
     <a href='login.php'>Login (click)</a>
+    <a href='create_account.php'>Create an account</a>
 
     <?php
 } else { ?>
