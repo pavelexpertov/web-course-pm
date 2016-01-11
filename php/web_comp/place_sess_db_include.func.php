@@ -10,6 +10,7 @@
             $spacing = $spacing . '../';
         }
 
+        $usrcs = $spacing . 'obj/user.cs.php';
         $errpath = $spacing . 'debug/turn_on_error_reporting.php';
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
@@ -18,6 +19,7 @@
         // echo "dbpath: " . "$dbpath";
         // echo "sesspath: " . "$sesspath";
 
+        $listIncludes[] = $usrcs;
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
         $listIncludes[] = $errpath;
