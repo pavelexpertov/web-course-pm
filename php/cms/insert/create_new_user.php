@@ -41,7 +41,6 @@ $query = "insert into Users(ID, Username, Password, Description)
           values(?, ?, ?, ?)";
 $insertstmt = $mysqli->prepare($query);
 $a = 0;
-// $usrname = '"' . $_['usrname'] . '"';
 $insertstmt->bind_param('isss', $a, $_POST['usrname'], $_POST['usrpwd'],
                         $_POST['biodesc']);
 if($insertstmt == false)
@@ -51,8 +50,8 @@ if($insertstmt == false)
 }
 $insertstmt->execute();
 $insertstmt->close();
-$_SESSION['err'] = "successfully created an account";
 header("Location: {$_SERVER['HTTP_REFERER']}");
+header("Location: ../../../index.php");
 
 
  ?>
