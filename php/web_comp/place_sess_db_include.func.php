@@ -10,6 +10,11 @@
             $spacing = $spacing . '../';
         }
 
+        //Including a file that returns a list of objects.
+        $objpath = $spacing . 'obj/getobjpath.func.php';
+        include $objpath;
+        $listOfObjPath = getObjPaths($num_of_dots);
+
         $errpath = $spacing . 'debug/turn_on_error_reporting.php';
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
@@ -21,6 +26,9 @@
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
         $listIncludes[] = $errpath;
+
+        //mergin arrays
+        $list = array_merge($listOfObjPath, $listIncludes);
 
         return $listIncludes;
 
