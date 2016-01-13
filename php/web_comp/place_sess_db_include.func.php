@@ -30,7 +30,7 @@
         //mergin arrays
         $list = array_merge($listOfObjPath, $listIncludes);
 
-        return $listIncludes;
+        return $list;
 
         // echo 'include $sesspath;
         // include $dbpath;
