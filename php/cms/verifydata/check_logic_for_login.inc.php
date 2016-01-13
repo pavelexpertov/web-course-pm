@@ -1,7 +1,7 @@
 <?php
     //This is for error reporting
     include '../../web_comp/place_sess_db_include.func.php';
-    include '../../obj/user.cs.php';
+    //include '../../obj/user.cs.php';
     $list = placeSDIncludes(2);
 
     foreach($list as $include)
