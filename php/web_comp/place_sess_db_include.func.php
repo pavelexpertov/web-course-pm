@@ -12,7 +12,7 @@
 
         $errpath = $spacing . 'debug/turn_on_error_reporting.php';
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
-        $sesspath = $spacing . 'conn_sess/sess_without_classes.inc.php';
+        $sesspath = $spacing . 'conn_sess/sess.inc.php';
 
         // echo "errpath: " . "$errpath";
         // echo "dbpath: " . "$dbpath";
