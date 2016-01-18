@@ -8,5 +8,6 @@ if(!isset($_SESSION['usr']))
 {
     $_SESSION['err'] = "Oooops something happened in the process of kicking out unwanted people";
     header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
 }
  ?>
