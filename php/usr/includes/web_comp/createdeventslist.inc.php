@@ -1,3 +1,6 @@
+<!-- This is a section to contain necessary stuff for cruding created events. -->
+<div>
+
 <?php
     //The purpose of the page is to print events created by the registered user
     //Create a query
@@ -23,9 +26,15 @@
                 <li>Type Of Event: <?php echo $event['etypename'] ?> </li>
             </ul>
 
+            <ul>
+                <li> Edit </li>
+                <li> Delete </li>
+            </ul>
+
         </div>
     <?php }    //End of the while looop
     } //End of the if statement block
     else { ?>
         <p>Ooops, looks like you haven't created any events </p>
 <?php }//End of the else clause ?>
+</div>
