@@ -30,6 +30,7 @@
         exit();
     }
     $querystmt->execute();
+
     //Checking for a number of queries
     $querystmt->store_result();
     $usr_exist = $querystmt->num_rows;

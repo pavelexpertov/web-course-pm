@@ -10,6 +10,6 @@
     placeHeadElement("User Account Page");
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
-    $includeList[] = 'php/includes/sections/usrpage_section.inc.php';
+    $includeList[] = 'php/usr/includes/sections/usrpage_section.inc.php';
     placeBodyElement($includeList);
 ?>
