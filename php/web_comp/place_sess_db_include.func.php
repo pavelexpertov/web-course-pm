@@ -2,7 +2,7 @@
     //This function will place include files of session and database
     //with appropriate leveling.
 
-    function placeSDIncludes($num_of_dots = 0)
+    function placeSDIncludes($num_of_dots = 0, $legituser = false)
     {
         $spacing = '';
         for($i = 0; $i < $num_of_dots; $i++)
@@ -19,22 +19,22 @@
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
 
-        // echo "errpath: " . "$errpath";
-        // echo "dbpath: " . "$dbpath";
-        // echo "sesspath: " . "$sesspath";
-
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
         $listIncludes[] = $errpath;
 
-        //mergin arrays
+        //If I want to check that the user is registered and logged in.
+        if($legituser)
+        {
+            $legituserpath = $spacing . 'usr/verify/check_if_user_legit.inc.php';
+            $listIncludes[] = $legituserpath;
+        }
+
+        //mergin arrays (user-defined objects first and then the paths to various scripts)
         $list = array_merge($listOfObjPath, $listIncludes);
 
         return $list;
 
-        // echo 'include $sesspath;
-        // include $dbpath;
-        // include $errpath;
     }
 
 
