@@ -9,7 +9,7 @@
 } else { ?>
 
     <!-- <p>You logged in?</p> -->
-    <h2> <?php echo $_SESSION['usr']->usrname; ?> </h2>
+    <h2><a href='usr_page.php'> <?php echo $_SESSION['usr']->usrname; ?> </a></h2>
     <a href='logout_logic.php'> log out </a>
 
     <?php }//End of the else clause?>
