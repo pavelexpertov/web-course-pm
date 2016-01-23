@@ -28,7 +28,11 @@
 
             <ul>
                 <li> Edit </li>
-                <li> Delete </li>
+        <?php
+            //Making a link to delte page with event's id
+        $dlink = "php/cms/delete/delete_created_event.inc.php?eid={$event['eveid']}";
+         ?>
+                <li><a href="<?php echo $dlink; ?>"> Delete </a></li>
             </ul>
 
         </div>
