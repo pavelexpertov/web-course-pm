@@ -6,10 +6,10 @@
   $list = placeSDIncludes(2, true);
   foreach($list as $include)
     include $include;
-
+    
   //The statement updates existing entries for event's data
   //The event's event's name and start time are updated
-  $query = "update Events set Name = ?, StartTime = ?
+  $query = "update Events set Name = ?, Description = ?
             where EManagerID = ? and ID = ?";
 
   $stmt = $mysqli->prepare($query);
@@ -18,12 +18,12 @@
       echo "Ooop an error has happened at prepare statement line";
       exit();
   }
-  $stmt->bind_param("ssii", $_POST['evename'], $_POST['stime'],
-                    $_SESSION['usr']->id, $_GET['eid']);
+  $stmt->bind_param("ssii", $_POST['evename'], $_POST['descr'],
+                    $_SESSION['usr']->id, $_POST['eid']);
   $stmt->execute();
   $stmt->close();
   //Return the user to the userpage
-  header("Location: {$_SERVER['HTTP_REFERER']}");
+  header("Location: ../../../usr_page.php");
   exit();
 
  ?>

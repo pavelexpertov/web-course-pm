@@ -42,8 +42,9 @@
   <fieldset>
     <legend>Edit your event</legend>
     <label> Event Name</label>
-    <input type="text" value = "<?php echo $evename; ?>" >
-    <textarea><?php echo $evedescr; ?> </textarea>
+    <input type="text" name="evename" id="evename" value = "<?php echo $evename; ?>" >
+    <textarea name="descr" id="descr"><?php echo $evedescr; ?> </textarea>
+    <input type="hidden" name="eid" id="eid" value="<?php echo $_GET['eid']; ?>">
     <input type="submit" value="Send the changes">
   </fieldset>
 
