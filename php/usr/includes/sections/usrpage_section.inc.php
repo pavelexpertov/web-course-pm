@@ -10,6 +10,7 @@
     //bookings and edit user settings.
     //Includes a list of created events
     include 'php/usr/includes/web_comp/createdeventslist.inc.php';
+    include 'php/usr/includes/web_comp/bookedeventslist.inc.php';
 
  ?>
 
