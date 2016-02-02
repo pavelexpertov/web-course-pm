@@ -4,7 +4,6 @@
   include '../../web_comp/place_sess_db_include.func.php';
   //include '../../obj/user.cs.php';
   $list = placeSDIncludes(2, true);
-
   foreach($list as $include)
     include $include;
 
@@ -19,7 +18,7 @@
       echo "Ooop an error has happened at prepare statement line";
       exit();
   }
-  $stmt->bind_param("ii", $_POST['evename'], $_POST['stime'],
+  $stmt->bind_param("ssii", $_POST['evename'], $_POST['stime'],
                     $_SESSION['usr']->id, $_GET['eid']);
   $stmt->execute();
   $stmt->close();
