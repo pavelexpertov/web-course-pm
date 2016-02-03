@@ -39,6 +39,8 @@
     }
     else { //if the booking doesn't exist
         $stmt->close();
+        //Create today's date for the booking in the correct format
+        $cdate = date("Y-m-d");
         $query = "insert into BookedEvents values(0, {$_GET['eid']},
                  {$_SESSION['usr']->id}), $cdate, 0)";
         $stmt->$mysqli->query($query);
