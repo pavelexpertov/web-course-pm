@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="php/cms/insert/create_new_event.php" method="post">
     <fieldset>
       <legend>Create a new event</legend>
       <label>Event name</label>
