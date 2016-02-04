@@ -30,25 +30,41 @@
         $stmt->bind_result($bookedid);
         $stmt->fetch();
         $stmt->close();
+        //Testing: to see if it managed to get the bookedid
+        //echo $bookedid;
         //Create today's date for the booking in the correct format
         $cdate = date("Y-m-d");
         //Make a new query to toggle the flag off
         $query = "update BookedEvents set archived = 0, bookingdate = $cdate where ID = $bookedid";
         $stmt = $mysqli->query($query);
-        $stmt->close();
+        //echo $stmt;
+        if($stmt == false)
+        {
+            echo "Ooops an error has happened inside an if clause of updating the booking archived and bookeddate ";
+            echo $mysqli->error;
+        }
+        //echo $mysqli->error;
+        //$stmt->close();
     }
     else { //if the booking doesn't exist
         $stmt->close();
         //Create today's date for the booking in the correct format
         $cdate = date("Y-m-d");
         $query = "insert into BookedEvents values(0, {$_GET['eid']},
-                 {$_SESSION['usr']->id}), $cdate, 0)";
-        $stmt->$mysqli->query($query);
-        $stmt->close();
+                 {$_SESSION['usr']->id}, $cdate, 0)";
+        $stmt=$mysqli->query($query);
+        if($stmt == false)
+        {
+            echo "Ooops an error has happened inside an else clause of inserting the booking";
+            echo $mysqli->error;
+        }
+        //echo $mysqli->error;
+
+        //$stmt->close();
     }
 
     //Return the user back
-    header("../../../usr_page.php");
+    header("Location: ../../../usr_page.php");
     exit();
 
  ?>

@@ -36,7 +36,7 @@
         }
         else {//If the user is not logged in
             ?>
-
+            <p>You need to be logged in to book the event.</p>
         <?php
     }//End of the outer if statement (else clause)
 

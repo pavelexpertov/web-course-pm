@@ -1,6 +1,8 @@
 <!-- The purpose of the section is to present information about the event -->
 <section>
     <?php
+        //Pasting a small booking section so user can book the event.
+        include 'php/includes/web_comp/bookingevent_small_section.inc.php';
         //Getting some information about the query
         $fields = " evename, evedescr,
                     etypename, evedescr,
@@ -27,6 +29,8 @@
         $resultEvent->fetch();
         $resultEvent->close();
 
+        echo $evename;
+        echo "<br>";
         echo $price;
 
 
