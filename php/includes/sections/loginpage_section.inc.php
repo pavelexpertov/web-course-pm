@@ -1,4 +1,4 @@
-<div>
+<div class="middle-section">
     <?php
         //include forthcoming Events
         // include 'php/includes/web_comp/forthcoming_events.inc.php';
