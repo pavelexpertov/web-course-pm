@@ -1,0 +1,16 @@
+/*////////////////////////////
+   Main stuff for the page
+/////////////////////////////*/
+
+#mainwrapper
+{
+  width: 1000px;
+  margin: auto;
+  border-style: dashed;
+}
+
+header
+{
+  border:5px;
+  border-style: solid
+}
