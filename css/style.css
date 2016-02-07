@@ -64,3 +64,16 @@ section /*Stuff that's on the right side of forthcoming events*/
    END OF Stuff for 'internal' containers 
    within middle section.
 ////////////////////////////*/
+
+/*///////////////////////////
+   Forthcoming events section's rules
+///////////////////////////*/
+
+aside h3 /*header for the whole section*/
+{
+   padding-left: 23px;
+}
+
+/*///////////////////////////
+   END OF Forthcoming events section's rules
+///////////////////////////*/
