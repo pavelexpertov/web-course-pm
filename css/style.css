@@ -6,11 +6,61 @@
 {
   width: 1000px;
   margin: auto;
-  border-style: dashed;
+  border-style: dashed; /*Border should be removed after testing!!!*/
+  padding: 23px; /*This is used for testing purposes*/
 }
 
 header
 {
   border:5px;
-  border-style: solid
+  border-style: solid;
+  margin-bottom: 23px; /*Margin needs to be adjusted after the stylesheet is done*/
 }
+
+/*The one that's literally in the middle of the webpages
+(that contains other sections and web_comp)*/
+.middle-section
+{
+  border:5px;
+  border-style: dotted;
+  overflow:auto; 
+   /*Fixes the 'overflow' problem 
+   when contained elements are 
+   taller than the container itself*/
+}
+
+
+/*////////////////////////////
+   END OF Main stuff for the page
+/////////////////////////////*/
+
+/*////////////////////////////
+   Stuff for 'internal' containers 
+   within middle section.
+////////////////////////////*/
+
+aside /*For forthcoming events section*/
+{
+/*    border:2px; */
+/*    border-style: solid; */
+   background-color: rebeccapurple;
+/*    width:224px; */
+   width: 20%;
+   float:left;
+}
+
+section /*Stuff that's on the right side of forthcoming events*/
+{
+/*    border:2px; */
+/*    border-style: solid; */
+   background-color: yellowgreen;
+   height:1500px;
+   float:left;
+   width: 80%;
+   
+}
+
+/*////////////////////////////
+   END OF Stuff for 'internal' containers 
+   within middle section.
+////////////////////////////*/
