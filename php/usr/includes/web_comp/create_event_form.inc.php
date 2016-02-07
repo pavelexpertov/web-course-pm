@@ -5,7 +5,7 @@
       <input type="text" id="evename" name="evename">
       <label>Event description</label>
       <textarea id="descr" name="descr"> </textarea>
-      <input type="sumbit" value="Create a new event">
+      <input type="submit" value="Create a new event">
     </fieldset>
 
 
