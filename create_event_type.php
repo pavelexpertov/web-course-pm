@@ -1,5 +1,5 @@
 <?php
-    //This is page for editing existing created event
+    //This is page for making a new event type
     //Creating database connection and starting session
     include 'php/conn_sess/db_n_sess.inc.php';
     //Checking if it's the legit user
@@ -10,6 +10,6 @@
     placeHeadElement("User Account Page");
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
-    $includeList[] = 'php/usr/includes/sections/edit_createdevent_section.inc.php';
+    $includeList[] = 'php/usr/includes/sections/create_event_type_section.inc.php';
     placeBodyElement($includeList);
 ?>
