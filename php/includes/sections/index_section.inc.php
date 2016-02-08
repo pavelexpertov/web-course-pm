@@ -1,5 +1,5 @@
 <!-- This pages's purpose is to represent elements on the index.php page -->
-<div>
+<div class="middle-section">
     <?php
         //Including the forthcoming events
         include "php/includes/web_comp/forthcoming_events.inc.php";

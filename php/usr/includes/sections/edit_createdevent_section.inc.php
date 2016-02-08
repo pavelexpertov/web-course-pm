@@ -1,4 +1,4 @@
-<div>
+<div class="middle-section">
 <?php
   //The purpose of the section is to display the form that the User
   //can use to edit existing event that he created.

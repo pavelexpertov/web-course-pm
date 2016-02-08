@@ -3,6 +3,8 @@
 closes events (displaying their names, dates
 and locations) -->
 
+<h3> Forthcoming Events </h3>
+
     <?php
         //Getting conection to the database
         require_once 'php/conn_sess/dbconn.inc.php';

@@ -1,4 +1,4 @@
-<div>
+<div class="middle-section">
 
     <ul>
         <li>Created Events</li>
