@@ -1,6 +1,6 @@
 <div id="category-list">
     <div class="category-item">
-    <a href="">Create a new Event Type</a>
+    <a href="create_event_type.php">Create a new Event Type</a>
 <?php
     //The prupose of the file is to print out two section (in the order):
     //1. List of Event Types
@@ -50,7 +50,7 @@
  ?>
 </div>
 <div class="category-item">
-<a href="">Create a new Venue </a>
+<a href="create_venue.php">Create a new Venue </a>
 <?php
 
     //Printing a Venue Types list
