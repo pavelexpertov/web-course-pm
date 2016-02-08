@@ -41,7 +41,11 @@
                 }
              ?>
              </p>
-
+            <p>
+    <a href="edit_event_type.php?vid=<?php echo $venue['ID'];?>">
+        Edit
+    </a>
+            </p>
             <?php
         }//End of the while loop
     }//end of the if statement
@@ -89,6 +93,11 @@
                 }
              ?>
              </p>
+            <p>
+    <a href="edit_venue.php?vid=<?php echo $venue['ID'];?>">
+        Edit
+    </a>
+            </p>
 
             <?php
         }//End of the while loop
