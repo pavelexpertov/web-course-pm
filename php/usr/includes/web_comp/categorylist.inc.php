@@ -42,7 +42,7 @@
              ?>
              </p>
             <p>
-    <a href="edit_event_type.php?vid=<?php echo $venue['ID'];?>">
+    <a href="edit_event_type.php?etid=<?php echo $venue['ID'];?>">
         Edit
     </a>
             </p>

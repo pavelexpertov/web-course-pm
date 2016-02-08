@@ -41,7 +41,7 @@
  ?>
 <form action="php/cms/update/update_venue.php" method="post">
     <fieldset>
-      <legend>Create a new Venue</legend>
+      <legend>Edit Venue</legend>
       <label>Venue name</label>
       <input type="text" id="vname" name="vname" value="<?php echo $name; ?>">
       <label>Town</label>
