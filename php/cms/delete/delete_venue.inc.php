@@ -1,6 +1,6 @@
 <?php
-//The purpose of the section is to delete a booked event
-//That's been booked by the user
+//The purpose of the section is to delete a venue
+//That's been created by the user
 
 include '../../web_comp/place_sess_db_include.func.php';
 $listOfIncludes = placeSDIncludes(2, true);
@@ -11,13 +11,13 @@ foreach($listOfIncludes as $include)
     include $include;
 
 //Deleting an event by assigning a flag to the event.
-//--using post method to transfer id of the event.
+//--using get method to transfer id of the event.
 //--SESSION array's usr contains id of the logged in user
 //--Just assign 1 to booked event's Archived and that's it.
 //--Return user back to where he came from
 
-$query = "update BookedEvents set archived = 1
-          where ID = ? and userid = ?";
+$query = "update Venues set Archived = 1
+          where ID = ? and ManagerID = ?";
 
 $stmt = $mysqli->prepare($query);
 if($stmt == false)
@@ -25,7 +25,7 @@ if($stmt == false)
     echo "Ooop an error has happened at prepare statement line";
     exit();
 }
-$stmt->bind_param("ii", $_GET['eid'], $_SESSION['usr']->id);
+$stmt->bind_param("ii", $_GET['vid'], $_SESSION['usr']->id);
 $stmt->execute();
 $stmt->close();
 //Return the user to the userpage

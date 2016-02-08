@@ -15,6 +15,7 @@
     {
         while($venue = $stmt->fetch_assoc())
         {
+    $link = "php/cms/delete/delete_event_type.inc.php?etid={$venue['ID']}";
             ?>
             <h3>
                 <a href="">
@@ -24,8 +25,9 @@
             <p>
             <?php
                 if($venue['Archived'] != 1) {
+
                     ?>
-                <a href="">
+                <a href="<?php echo $link; ?>">
                     Delete
                 </a>
                     <?php
@@ -71,8 +73,9 @@
             <p>
             <?php
                 if($venue['Archived'] != 1) {
+    $link = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
                     ?>
-                <a href="">
+                <a href="<?php echo $link; ?>">
                     Delete
                 </a>
                     <?php
