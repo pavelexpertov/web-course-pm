@@ -3,6 +3,7 @@
     <ul>
         <li>Created Events</li>
         <li>Booked Events</li>
+        <li>Manage Categories</li>
         <li>User Settings</li>
     </ul>
 <?php
@@ -11,6 +12,7 @@
     //Includes a list of created events
     include 'php/usr/includes/web_comp/createdeventslist.inc.php';
     include 'php/usr/includes/web_comp/bookedeventslist.inc.php';
+    include 'php/usr/includes/web_comp/categorylist.inc.php';
 
  ?>
 
