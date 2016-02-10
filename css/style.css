@@ -61,6 +61,12 @@ header li a:hover
 {
    background-color: #111;
 }
+
+#login-section
+{
+   float: right;
+}
+
 /*////////////////////////////
    END OF Header's contents rules
 /////////////////////////////*/
