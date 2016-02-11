@@ -1,4 +1,5 @@
 <div>
+<h2>List of Bookings</h2>
     <?php
         //The purpose of the section is to list user's booked events.
 
@@ -39,7 +40,7 @@
         }//End of the if statement
         else {
             ?>
-            <p>Oooops, looks like you haven't created any events </p>
+            <p>Oooops, looks like you haven't made any bookings. </p>
         <?php
         }//End of the else statement
      ?>

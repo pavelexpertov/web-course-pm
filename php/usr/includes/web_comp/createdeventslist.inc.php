@@ -1,5 +1,6 @@
 <!-- This is a section to contain necessary stuff for cruding created events. -->
 <div>
+<h2>List Of Your Created Events</h2>
   <h3><a href="create_event.php"> Create new event</a></h3>
 <?php
     //The purpose of the page is to print events created by the registered user
