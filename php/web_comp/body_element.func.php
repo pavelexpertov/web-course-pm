@@ -2,7 +2,7 @@
     //This page is to print out a number of includes, which
     // are passed using an array and using foreach loop
 
-    function placeBodyElement($includeList)
+    function placeBodyElement($includeList, $scriptpath = "none")
     {
 ?>
 <body>
@@ -16,6 +16,15 @@
         }
     ?>
     </div>
+    <?php // If a javascript file is provided
+    if($scriptpath != "none")
+    {
+        ?>
+        <script src="<?php echo $scriptpath; ?>"></script>
+<?php
+    }
+
+     ?>
 </body>
 </html>
 
