@@ -31,24 +31,19 @@
 
 
     ?>
-    <div class="sub-header">
-        <h2> Name of the event</h2>
-    </div>
-    <div class="sub-header">
+<div id="accordion">
+	<h3> Name of the event</h3>
+    <div>
         <?php echo $evename; ?>
     </div>
-    <div class="sub-header">
-        <h2>Description</h2>
-    </div>
-    <div class="sub-header">
+        <h3>Description</h3>
+    <div>
 <p>Type of Event: <?php echo $etypename; ?></p>
 <h4>Description</h4>
 <p> <?php echo $evedescr; ?> </p>
     </div>
-    <div class="sub-header">
-        <h2>Event Location and Time </h2>
-    </div>
-    <div class="sub-header">
+        <h3>Event Location and Time </h3>
+    <div>
         <p>Start time: <?php echo $stime; ?></p>
         <p>Finish time: <?php echo $ftime; ?></p>
         <h4>Location: </h4>
@@ -57,11 +52,10 @@
         <p>Location: </p>
         <p><?php echo $address; ?></p>
     </div>
-<div class="sub-header">
-    <h2> Event's Manager </h2>
-</div>
-<div class="sub-header">
+    <h3> Event's Manager </h3>
+<div>
     <p> <?php echo "$managerfn  $managerln"; ?> </p>
 </div>
+</div><?php //Here is the end of the higher div?>
 
 </section>
