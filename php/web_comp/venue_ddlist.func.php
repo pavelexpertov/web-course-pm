@@ -7,7 +7,7 @@ function placeDDVenues($ddname, $selectedVenue = false){
     include 'php/conn_sess/dbconn.inc.php';
     $listOfVenues = array();
     $query = "select ID, Name, Town, Country
-              from Venues where Archived = 0";
+              from Venues where Archived = 0 and ManagerID is not null";
     $stmt = $mysqli->query($query);
 
     while($v = $stmt->fetch_assoc())
@@ -20,7 +20,7 @@ function placeDDVenues($ddname, $selectedVenue = false){
     }
 
 
-        print_r($listOfVenues);
+        //print_r($listOfVenues);
 
 
     //Placing the drop down list
