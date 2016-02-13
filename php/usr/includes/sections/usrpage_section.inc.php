@@ -1,5 +1,5 @@
 <div class="middle-section">
-
+<div id="tabs">
     <ul>
         <li><a href="#tabs-1">Created Events</a></li>
         <li><a href="#tabs-2">Booked Events</a></li>
@@ -13,7 +13,7 @@
     include 'php/usr/includes/web_comp/createdeventslist.inc.php';
     include 'php/usr/includes/web_comp/bookedeventslist.inc.php';
     include 'php/usr/includes/web_comp/categorylist.inc.php';
-
+    include 'php/usr/includes/web_comp/usersettings.inc.php';
  ?>
-
+</div>
 </div>
