@@ -1,4 +1,4 @@
-<div id="category-list">
+<div id="tabs-3">
     <div class="category-item">
 <h2>List of your Event Types</h2>
     <a href="create_event_type.php">Create a new Event Type</a>

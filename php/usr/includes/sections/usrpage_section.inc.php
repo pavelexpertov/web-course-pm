@@ -1,10 +1,10 @@
 <div class="middle-section">
 
     <ul>
-        <li>Created Events</li>
-        <li>Booked Events</li>
-        <li>Manage Categories</li>
-        <li>User Settings</li>
+        <li><a href="#tabs-1">Created Events</a></li>
+        <li><a href="#tabs-2">Booked Events</a></li>
+        <li><a href="#tabs-3">Manage Categories</a></li>
+        <li><a href="#tabs-4">User Settings</a></li>
     </ul>
 <?php
     //The section is used for the user to edit events, manage

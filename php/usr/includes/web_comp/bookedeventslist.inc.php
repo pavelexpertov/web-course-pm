@@ -1,4 +1,4 @@
-<div>
+<div id="tabs-2">
 <h2>List of Bookings</h2>
     <?php
         //The purpose of the section is to list user's booked events.

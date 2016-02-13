@@ -1,5 +1,5 @@
 <!-- This is a section to contain necessary stuff for cruding created events. -->
-<div>
+<div id="tabs-1">
 <h2>List Of Your Created Events</h2>
   <h3><a href="create_event.php"> Create new event</a></h3>
 <?php
