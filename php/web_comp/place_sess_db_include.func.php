@@ -19,11 +19,13 @@
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
         $convertdate = $spacing . 'data_format/convert_date.func.php';
+        $truncatetime = $spacing . 'data_format/truncate_time.func.php';
 
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
         $listIncludes[] = $errpath;
         $listIncludes[] = $convertdate;
+        $listIncludes[] = $truncatetime;
 
         //If I want to check that the user is registered and logged in.
         if($legituser)
