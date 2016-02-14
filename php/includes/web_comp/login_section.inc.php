@@ -6,8 +6,10 @@
     <form action='<?php echo $action; ?>' method='post'>
         <label for='usr'>Username</label>
         <input type='text' name='usr' id='usr'>
+	<br>
         <label for='pwd'>Password</label>
         <input type='text' name='pwd' id='pwd'>
+	<br>
         <input type='submit' value="Login">
 
     </form>
