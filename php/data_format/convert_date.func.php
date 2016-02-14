@@ -14,5 +14,19 @@ function convertDate($date)
     return $newdate;
 }
 
+//The purpose of the convertIsoDate is to conver the standard
+//date to normal i.e. 1994-01-12 to 12/01/1994
+
+function convertIsoDate($date)
+{
+    $splitdate = explode("-", $date);
+    $day = $splitdate[2];
+    $year = $splitdate[0];
+    $splitdate[0] = $day;
+    $splitdate[2] = $year;
+    $newdate = implode("/", $splitdate);
+    return $newdate;
+}
+
 
  ?>
