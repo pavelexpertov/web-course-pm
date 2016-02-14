@@ -4,7 +4,7 @@ include 'php/web_comp/venue_ddlist.func.php';
 include 'php/web_comp/event_type_ddlist.func.php';
 
 ?>
-<form action="php/cms/insert/create_new_event.php" method="post">
+<form id="create-event" action="php/cms/insert/create_new_event.php" method="post">
     <fieldset>
       <legend>Create a new event</legend>
       <label>Event name</label>
