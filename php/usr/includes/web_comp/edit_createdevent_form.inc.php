@@ -41,7 +41,7 @@
  ?>
 
 
-<form action="php/cms/update/update_created_event.php" method="post">
+<form id="create-event" action="php/cms/update/update_created_event.php" method="post">
     <fieldset>
       <legend>Create a new event</legend>
       <label>Event name</label>
