@@ -4,7 +4,7 @@
 function truncateTime($passedtime)
 {
     $time = substr($passedtime, 0, 5);
-    echo $time;
+    return $time;
 }
 
  ?>

@@ -5,6 +5,8 @@
     include 'php/web_comp/time_ddlist.func.php';
     include 'php/web_comp/venue_ddlist.func.php';
     include 'php/web_comp/event_type_ddlist.func.php';
+    include 'php/data_format/truncate_time.func.php';
+    include 'php/data_format/convert_date.func.php';
   $eveid = $_GET['eid'];
 
   $columns = "Name, Description,
@@ -49,13 +51,13 @@
       <textarea id="descr" name="descr"> <?php echo $evedescr;?></textarea>
       <br>
       <label>Date</label>
-      <input type="text" id="date" name="date" value="<?php echo $date;?>">
+      <input type="text" id="date" name="date" value="<?php echo convertIsoDate($date);?>">
       <br>
       <label>Start Time</label>
-      <?php placeDDTime("stime", $stime); ?>
+      <?php placeDDTime("stime", truncateTime($stime)); ?>
       <br>
       <label>Finish Time</label>
-      <?php placeDDTime("ftime", $ftime); ?>
+      <?php placeDDTime("ftime", truncateTime($ftime)); ?>
       <br>
       <label>Event Type</label>
       <?php placeDDEventTypes("evetype"); ?>
