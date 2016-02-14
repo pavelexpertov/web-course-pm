@@ -9,7 +9,7 @@ function convertDate($date)
     $year = $splitdate[2];
     $splitdate[0] = $year;
     $splitdate[2] = $day;
-    print_r($splitdate);
+    //print_r($splitdate);
     $newdate = implode("-",$splitdate);
     return $newdate;
 }

@@ -1,2 +1,6 @@
 //Adding a date picker
-$("#date").datepicker();
+$("#date").datepicker(
+        {
+            dateFormat: "dd/mm/yy"
+        }
+);

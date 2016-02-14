@@ -6,18 +6,32 @@
   foreach($list as $include)
     include $include;
 
-  $columns = "ID, Name, Description, EManagerID";
+  //Creating variables for input
+  $evename = $_POST['evename'];
+  $descr = $_POST['descr'];
+  $stime = $_POST['stime'];
+  $ftime = $_POST['ftime'];
+  $date = convertDate($_POST['date']);
+  $evetypeid = $_POST['evetype'];
+  $venueid = $_POST['venueid'];
 
-  $query = "insert into Events($columns) values(0, ?, ?, ?)";
+  $columns = "ID, Name, Description, EManagerID,
+              Date, StartTime, FinishTime,
+              ConfType, VenueID";
+
+  $query = "insert into Events($columns)
+            values(0, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   $stmt = $mysqli->prepare($query);
   if($stmt == false)
   {
       echo "Ooop an error has happened at prepare statement line";
+      echo $stmt->error;
       exit();
   }
-  $stmt->bind_param("ssi", $_POST['evename'], $_POST['descr'],
-                    $_SESSION['usr']->id);
+  $stmt->bind_param("ssisssii", $evename, $descr, $_SESSION['usr']->id,
+                           $date, $stime, $ftime,
+                           $evetypeid, $venueid);
   $stmt->execute();
   $stmt->close();
   //Redirect user back to usr page

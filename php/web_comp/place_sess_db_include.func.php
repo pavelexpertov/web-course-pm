@@ -18,10 +18,12 @@
         $errpath = $spacing . 'debug/turn_on_error_reporting.php';
         $dbpath = $spacing . 'conn_sess/dbconn.inc.php';
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
+        $convertdate = $spacing . 'data_format/convert_date.func.php';
 
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
         $listIncludes[] = $errpath;
+        $listIncludes[] = $convertdate;
 
         //If I want to check that the user is registered and logged in.
         if($legituser)
