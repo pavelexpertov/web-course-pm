@@ -17,7 +17,7 @@ function placeDDEventTypes($ddname, $selectedVenue = false){
     }
 
 
-        print_r($listOfET);
+        //print_r($listOfET);
 
 
     //Placing the drop down list
