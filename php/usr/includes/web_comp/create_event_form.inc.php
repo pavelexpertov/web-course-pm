@@ -11,7 +11,7 @@ include 'php/web_comp/event_type_ddlist.func.php';
       <input type="text" id="evename" name="evename">
       <br>
       <label>Event description</label>
-      <textarea id="descr" name="descr"> </textarea>
+      <textarea id="descr" name="descr"></textarea>
       <br>
       <label>Date</label>
       <input type="text" id="date" name="date">

@@ -48,7 +48,7 @@
       <input type="text" id="evename" name="evename" value="<?php echo $evename;?>">
       <br>
       <label>Event description</label>
-      <textarea id="descr" name="descr"> <?php echo $evedescr;?></textarea>
+      <textarea id="descr" name="descr"><?php echo $evedescr;?></textarea>
       <br>
       <label>Date</label>
       <input type="text" id="date" name="date" value="<?php echo convertIsoDate($date);?>">
