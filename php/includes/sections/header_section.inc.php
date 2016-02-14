@@ -7,9 +7,9 @@
     <!-- <img id="header_logo"> -->
     <nav>
         <ul>
-            <li> <a href="#">Home</a></li>
-            <li> <a href="#">Sites</a></li>
-            <li> <a href="#">Speakers</a></li>
+            <li> <a href="index.php">Home</a></li>
+            <li> <a href="search.php">Search</a></li>
+            <li> <a href="speakers_list.php">Speakers</a></li>
         </ul>
     </nav>
 

@@ -17,6 +17,7 @@
     ?>
 
     <h1><?php echo "$fname" . " " . "$lname"; ?></h1>
-    <p><?php echo "$job"; ?> </p>
+    <p>Current job: <?php echo "$job"; ?> </p>
+    <h1>Description</h1>
     <p><?php echo "$descr"; ?> </p>
 </section>
