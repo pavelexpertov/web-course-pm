@@ -13,9 +13,9 @@
 
     if(isset($_GET['simplesearch']) && $_GET['simplesearch'] != "")
         $simpleSearch = $_GET['simplesearch'];
-    if(isset($_GET['adv-search']))
+    if(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
         $advancedSearch = $_GET['adv-search'];
-    if(isset($_GET['date']))
+    if(isset($_GET['date']) && $_GET['date'] != "")
         $date = convertDate($_GET['date']);
     if(isset($_GET['venueid']))
         $venueId = $_GET['venueid'];
@@ -25,11 +25,11 @@
     $listOfVars = array();
     if(isset($_GET['simplesearch']) && $_GET['simplesearch'] != "")
         $listOfVars[] = $simpleSearch;
-    if(isset($_GET['adv-search']))
+    if(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
         $listOfVars[] = $advancedSearch;
     if(isset($_GET['venueid']))
         $listOfVars[] = $venueId;
-    if(isset($_GET['date']))
+    if(isset($_GET['date']) && $_GET['date'] != "")
         $listOfVars[] = $date;
     if(isset($_GET['evetype']))
         $listOfVars[] = $eveType;
@@ -67,8 +67,16 @@
 
         // placeEventResult($resultEvents);
     }
-    elseif(isset($_GET['adv-search']))
+    elseif(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
     {//If complicated search has been used
+        //Logic of figuring out what the stuff is
+        $listOfCond = array();
+        if(isset($venueId))
+            $listOfCond[] = "VenueID = $venueId";
+        if(isset($eveType))
+            $listOfCond[] = "ConfType = $venueId";
+        if(isset($date))
+            $listOfCond[] = "ConfType = $venueId";
 
     }
     else
