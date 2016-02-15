@@ -10,7 +10,7 @@ function placeEventResult(&$queryResult)
     // $queryResult->bind_result($eveid, $name);
     $queryResult->store_result();
     $numRows = $queryResult->num_rows;
-    // echo "$numRows";
+     echo "Number of results is $numRows";
 
     while($queryResult->fetch()) {
 ?>

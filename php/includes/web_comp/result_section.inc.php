@@ -3,6 +3,7 @@
     <?php
     //places logic code here. Remember there is a variable that gets assigned with
     //null value and you have to check it before calling placeEventResult function
+    //echo "hello";
     include 'php/cms/retrieve/searchlogic_for_result_section.inc.php';
     //The function that prints out the results from the search logic
     include 'php/web_comp/result_events.func.php';
