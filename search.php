@@ -4,9 +4,9 @@
     //Adding head element
     include 'php/web_comp/head_element.func.php';
     include 'php/web_comp/body_element.func.php';
-    placeHeadElement("Speaker's information");
+    placeHeadElement("Search for Events");
     //Adding body element
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/includes/sections/searchpage_section.php';
-    placeBodyElement($includeList);
+    placeBodyElement($includeList, "js/search.js");
  ?>
