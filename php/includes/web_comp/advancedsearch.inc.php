@@ -11,9 +11,9 @@
         <input type="submit" value="Search">
         <br>
         <label>Venues:</label>
-        <?php placeDDVenues("venueid"); ?>
+        <?php placeDDVenues("venueid", false, true); ?>
         <label>Event Type:</label>
-        <?php placeDDEventTypes("evetype");?>
+        <?php placeDDEventTypes("evetype", false, true);?>
         <br>
         <label>Date:</label>
         <input type="text" id="date" name="date">

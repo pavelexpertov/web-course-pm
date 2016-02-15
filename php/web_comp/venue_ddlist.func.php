@@ -3,7 +3,7 @@
 //a drop down list that will contain venue's info and id
 
 //Creating an associative array of data in an array
-function placeDDVenues($ddname, $selectedVenue = false){
+function placeDDVenues($ddname, $selectedVenue = false, $placeall = false){
     include 'php/conn_sess/dbconn.inc.php';
     $listOfVenues = array();
     $query = "select ID, Name, Town, Country
@@ -26,6 +26,13 @@ function placeDDVenues($ddname, $selectedVenue = false){
     //Placing the drop down list
     ?>
 <select id="<?php echo $ddname;?>" name="<?php echo $ddname;?>">
+    <?php
+    if($placeall) {
+    ?>
+    <option value="all">All Venues</option>
+    <?php
+}//End of the if statement
+    ?>
     <?php
     foreach($listOfVenues as $v)
     {

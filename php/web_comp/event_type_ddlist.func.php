@@ -3,7 +3,7 @@
 //a drop down list that will contain event type's info and id
 
 //Creating an associative array of data in an array
-function placeDDEventTypes($ddname, $selectedVenue = false){
+function placeDDEventTypes($ddname, $selectedVenue = false, $placeall = false){
     include 'php/conn_sess/dbconn.inc.php';
     $listOfET = array();
     $query = "select ID, Name from EventTypes where Archived = 0 and ManagerID is not null";
@@ -23,6 +23,13 @@ function placeDDEventTypes($ddname, $selectedVenue = false){
     //Placing the drop down list
     ?>
 <select id="<?php echo $ddname;?>" name="<?php echo $ddname;?>">
+    <?php
+        if($placeall) {
+            ?>
+        <option value="all">All Event Types</option>
+    <?php
+    }
+    ?>
     <?php
     foreach($listOfET as $et)
     {
