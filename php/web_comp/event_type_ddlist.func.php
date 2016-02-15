@@ -16,19 +16,23 @@ function placeDDEventTypes($ddname, $selectedVenue = false, $placeall = false){
         $listOfET[] = $evt;
     }
 
-
-        //print_r($listOfET);
-
-
     //Placing the drop down list
     ?>
 <select id="<?php echo $ddname;?>" name="<?php echo $ddname;?>">
     <?php
         if($placeall) {
+            if($selectedVenue == "all")
+            {
+            ?>
+        <option value="all" selected>All Event Types</option>
+    <?php
+            } //End of the internal if statement
+            else {
             ?>
         <option value="all">All Event Types</option>
     <?php
-    }
+            }//End of the else clause
+        }//End of the external if statement
     ?>
     <?php
     foreach($listOfET as $et)

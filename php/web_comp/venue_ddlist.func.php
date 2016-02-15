@@ -19,19 +19,22 @@ function placeDDVenues($ddname, $selectedVenue = false, $placeall = false){
         $listOfVenues[] = $venue;
     }
 
-
-        //print_r($listOfVenues);
-
-
     //Placing the drop down list
     ?>
 <select id="<?php echo $ddname;?>" name="<?php echo $ddname;?>">
     <?php
     if($placeall) {
+        if($selectedVenue == "all") {
+    ?>
+    <option value="all" selected>All Venues</option>
+    <?php
+        }//End of the internal if statement
+        else {
     ?>
     <option value="all">All Venues</option>
     <?php
-}//End of the if statement
+        }//End of the else clause
+    }//End of the if statement
     ?>
     <?php
     foreach($listOfVenues as $v)
