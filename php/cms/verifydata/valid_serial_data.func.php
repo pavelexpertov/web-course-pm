@@ -33,4 +33,27 @@ function checkTime($time)
         return false;
 }
 
+function checkTimings($stime, $ftime)
+{
+    //Checking to make sure stime is before ftime or not the same
+    //First check if one of them is not passed as false
+    if($stime == false || $ftime == false)
+    {   //return false
+        return false;
+    }
+    //converting time to minutes format of time is hh:mm
+    $astime = explode(":",$stime);
+    $aftime = explode(":",$ftime);
+
+    $stmin = ($astime[0] * 60) + $astime[1]; //Start time
+    $ftmin = ($aftime[0] * 60) + $aftime[1]; //Finish time
+    /*echo $stmin . "<br>";
+    echo $ftmin;*/
+    if($stmin < $ftmin)
+        return true;
+    else
+        return false;
+}
+
+
  ?>
