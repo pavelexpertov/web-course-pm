@@ -17,9 +17,9 @@
         $advancedSearch = $_GET['adv-search'];
     if(isset($_GET['date']) && $_GET['date'] != "")
         $date = convertDate($_GET['date']);
-    if(isset($_GET['venueid']))
+    if(isset($_GET['venueid']) && $_GET['venueid'] != "all")
         $venueId = $_GET['venueid'];
-    if(isset($_GET['evetype']))
+    if(isset($_GET['evetype']) && $_GET['evetype'] != "all")
         $eveType = $_GET['evetype'];
 
     $listOfVars = array();
@@ -27,11 +27,11 @@
         $listOfVars[] = $simpleSearch;
     if(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
         $listOfVars[] = $advancedSearch;
-    if(isset($_GET['venueid']))
+    if(isset($_GET['venueid']) && $_GET['venueid'] != "all")
         $listOfVars[] = $venueId;
     if(isset($_GET['date']) && $_GET['date'] != "")
         $listOfVars[] = $date;
-    if(isset($_GET['evetype']))
+    if(isset($_GET['evetype']) && $_GET['evetype'] != "all")
         $listOfVars[] = $eveType;
 
     //if the list is not empty
@@ -74,9 +74,35 @@
         if(isset($venueId))
             $listOfCond[] = "VenueID = $venueId";
         if(isset($eveType))
-            $listOfCond[] = "ConfType = $venueId";
+            $listOfCond[] = "ConfType = $eveType";
         if(isset($date))
-            $listOfCond[] = "ConfType = $venueId";
+            $listOfCond[] = "Date = $date";
+
+        $stringofcond = "";
+        if(count($listOfCond) > 0)
+        {
+            $stringofcond = implode(" and ", $listOfCond);
+            $stringofcond = "and " . $stringofcond;
+        }
+
+        //echo $stringofcond;
+        //Setting up query
+        $query = "select $fields from $view
+                  where eveid in (select ID from Events
+                   where (Name like ? or Description like ?) $stringofcond)";
+        echo $query . "<br>";
+        $resultEvents = $mysqli->prepare($query);
+        if($resultEvents == false)
+        {
+            echo "Something happened in clause where adv-search is used <br>";
+            echo $resultEvents->error_list;
+            exit();
+        }
+
+        $stringQuery = '%' . $advancedSearch . '%';
+        $resultEvents->bind_param("ss", $stringQuery, $stringQuery);
+        $resultEvents->execute();
+
 
     }
     else
