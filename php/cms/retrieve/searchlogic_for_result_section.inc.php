@@ -90,7 +90,7 @@
         $query = "select $fields from $view
                   where eveid in (select ID from Events
                    where (Name like ? or Description like ?) $stringofcond)";
-        echo $query . "<br>";
+        //echo $query . "<br>";
         $resultEvents = $mysqli->prepare($query);
         if($resultEvents == false)
         {
