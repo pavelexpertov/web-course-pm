@@ -47,13 +47,20 @@ function checkTimings($stime, $ftime)
 
     $stmin = ($astime[0] * 60) + $astime[1]; //Start time
     $ftmin = ($aftime[0] * 60) + $aftime[1]; //Finish time
-    /*echo $stmin . "<br>";
-    echo $ftmin;*/
     if($stmin < $ftmin)
         return true;
     else
         return false;
 }
 
-
+function checkPassword($pwd)
+{
+    /*The passwords first character must be a letter, it must contain
+    at least 4 characters adn no more than 15 characters and no characters other
+    than letters, numbers adn teh underscore may be used*/
+    if(preg_match("#^[a-zA-Z]\w{3,14}$#", $pwd))
+        return $pwd;
+    else
+        return false;
+}
  ?>
