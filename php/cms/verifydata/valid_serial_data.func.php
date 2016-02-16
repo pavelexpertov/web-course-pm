@@ -9,10 +9,10 @@ function checkInt($number)
     return filter_var($num, FILTER_VALIDATE_INT);
 }
 
-function checkDate($date)
+/*function checkDate($date)
 {
     //The $date is supposed to be in dd/mm/yyyy format
-}
+}*/
 
 function checkString($string)
 {
@@ -20,9 +20,12 @@ function checkString($string)
     return $s;
 }
 
-function checkDate($date)
+function checkDateF($date)
 {
-
+    if(preg_match("#^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$#", $date))
+        return true;
+    else
+        return false;
 }
 
  ?>
