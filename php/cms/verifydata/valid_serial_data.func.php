@@ -9,11 +9,6 @@ function checkInt($number)
     return filter_var($num, FILTER_VALIDATE_INT);
 }
 
-/*function checkDate($date)
-{
-    //The $date is supposed to be in dd/mm/yyyy format
-}*/
-
 function checkString($string)
 {
     $s = filter_var($string, FILTER_SANITIZE_STRING);
@@ -24,6 +19,16 @@ function checkDateF($date)
 {
     if(preg_match("#^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$#", $date))
         return $date;
+    else
+        return false;
+}
+
+function checkTime($time)
+{
+    //This function checks if time is in hh:mm format
+    //if(preg_match("#^(\d{2}):(\d{2})$#", $time))
+    if(preg_match("#^(0[0-9]|1[0-9]|2[0-3]):(00|30)$#", $time))
+        return $time;
     else
         return false;
 }
