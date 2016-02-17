@@ -17,7 +17,11 @@ function checkString($string)
 
 function checkDateF($date)
 {
-    if(preg_match("#^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$#", $date))
+    //The date is in format of dd/mm/yyyy
+    if(!preg_match("#^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$#", $date))
+        return false;
+    $d = explode("/", $date);
+    if(checkdate($d[1], $d[0], $d[2]))
         return $date;
     else
         return false;
