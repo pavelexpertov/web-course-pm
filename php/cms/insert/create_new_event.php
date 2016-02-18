@@ -6,6 +6,9 @@
   foreach($list as $include)
     include $include;
 
+  //Clearing out errors
+  if(isset($_SESSION['time_err']))
+    unset($_SESSION['time_err']);
   //Creating variables for input
   $evename = checkString($_POST['evename']);
   $descr = checkString($_POST['descr']);

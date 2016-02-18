@@ -22,9 +22,18 @@ include 'php/web_comp/event_type_ddlist.func.php';
       <label>Finish Time</label>
       <?php placeDDTime("ftime"); ?>
       <br>
+      <?php
+      if(isset($_SESSION['time_err']))
+      {
+          ?>
+          <br><?php echo $_SESSION['time_err']; ?> <br>
+         <?php
+     }//End of the if statement
+       ?>
       <label>Event Type</label>
       <?php placeDDEventTypes("evetype"); ?>
       <br>
+
       <label>Venue</label>
       <?php placeDDVenues("venueid"); ?>
       <input type="submit" value="Create a new event">
