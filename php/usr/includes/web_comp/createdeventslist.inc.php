@@ -3,6 +3,9 @@
 <h2>List Of Your Created Events</h2>
   <h3><a href="create_event.php"> Create new event</a></h3>
 <?php
+    include 'php/data_format/truncate_time.func.php';
+    include 'php/data_format/convert_date.func.php';
+    include 'php/web_comp/button_element.func.php';
     //The purpose of the page is to print events created by the registered user
     //Create a query
     $query = "select eveid, evename, date, stime,
@@ -21,25 +24,17 @@
         <div>
             <h3> <?php echo $event['evename']; ?> </h3>
             <ul>
-                <li> <?php echo $event['date'] ?> </li>
-                <li>Start Time: <?php echo $event['stime'] ?> </li>
-                <li>Finish Time: <?php echo $event['ftime'] ?> </li>
-                <li>Type Of Event: <?php echo $event['etypename'] ?> </li>
+                <li> <?php echo convertIsoDate($event['date']); ?> </li>
+                <li>Start Time: <?php echo truncateTime($event['stime']); ?> </li>
+                <li>Finish Time: <?php echo truncateTime($event['ftime']); ?> </li>
+                <li>Type Of Event: <?php echo $event['etypename']; ?> </li>
             </ul>
-
-            <ul>
-                <?php
-                    //Making a link to edit page with event's id
+            <?php
                 $elink = "edit_createdevent.php?eid={$event['eveid']}";
-                 ?>
-                <li><a href="<?php echo $elink; ?>"> Edit </a></li>
-                <?php
-                    //Making a link to delte page with event's id
                 $dlink = "php/cms/delete/delete_created_event.inc.php?eid={$event['eveid']}";
-                 ?>
-                <li><a href="<?php echo $dlink; ?>"> Delete </a></li>
-            </ul>
-
+                placeButton("Edit", $elink);
+                placeButton("Delete", $dlink);
+             ?>
         </div>
     <?php }    //End of the while looop
     } //End of the if statement block

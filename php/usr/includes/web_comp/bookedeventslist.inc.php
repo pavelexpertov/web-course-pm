@@ -22,17 +22,13 @@
                         </a>
                     </h3>
                     <ul>
-                        <li> Event's date: <?php echo $event['evedate']; ?> </li>
-                        <li> Date of Booking: <?php echo $event['bedate']; ?> </li>
+                        <li> Event's date: <?php echo convertIsoDate($event['evedate']); ?> </li>
+                        <li> Date of Booking: <?php echo convertIsoDate($event['bedate']); ?> </li>
                     </ul>
-                    <ul>
-                        <?php $bevelink = "?eid={$event['beid']}"; ?>
-                        <li>
-                        <a href="php/cms/delete/delete_booked_event.inc.php<?php echo $bevelink; ?>">
-                            Delete
-                        </a>
-                        </li>
-                    </ul>
+                    <?php
+        $bdlink = "php/cms/delete/delete_booked_event.inc.php?eid={$event['beid']}";
+        placeButton("Delete", $bdlink);
+                     ?>
                 </div>
 
             <?php

@@ -16,38 +16,21 @@
     {
         while($venue = $stmt->fetch_assoc())
         {
-    $link = "php/cms/delete/delete_event_type.inc.php?etid={$venue['ID']}";
             ?>
             <h3>
                 <a href="">
                     <?php echo $venue['Name']; ?>
                 </a>
             </h3>
-            <p>
             <?php
-                if($venue['Archived'] != 1) {
-
-                    ?>
-                <a href="<?php echo $link; ?>">
-                    Delete
-                </a>
-                    <?php
-                }
-                else {
-                ?>
-                <a href="">
-                    Restore
-                </a>
-                <?php
-                }
-             ?>
-             </p>
-            <p>
-    <a href="edit_event_type.php?etid=<?php echo $venue['ID'];?>">
-        Edit
-    </a>
-            </p>
-            <?php
+    $elink = "edit_event_type.php?etid={$venue['ID']}";
+    $dlink = "php/cms/delete/delete_event_type.inc.php?etid={$venue['ID']}";
+    $rlink = "#";
+            placeButton("Edit", $elink);
+            if($venue['Archived'] != 1)
+                placeButton("Delete", $dlink);
+            else
+                placeButton("Restore", $rlink);
         }//End of the while loop
     }//end of the if statement
     else {
@@ -72,36 +55,17 @@
         {
             ?>
             <h3>
-                <a href="">
-                    <?php echo $venue['Name']; ?>
-                </a>
+                <?php echo $venue['Name']; ?>
             </h3>
-            <p>
-            <?php
-                if($venue['Archived'] != 1) {
-    $link = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
-                    ?>
-                <a href="<?php echo $link; ?>">
-                    Delete
-                </a>
-                    <?php
-                }
-                else {
-                ?>
-                <a href="">
-                    Restore
-                </a>
-                <?php
-                }
-             ?>
-             </p>
-            <p>
-    <a href="edit_venue.php?vid=<?php echo $venue['ID'];?>">
-        Edit
-    </a>
-            </p>
-
-            <?php
+    <?php
+    $dlink = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
+    $elink = "edit_venue.php?vid={$venue['ID']}";
+    $rlink = "#";
+        placeButton("Edit", $elink);
+        if($venue['Archived'] != 1)
+            placeButton("Delete", $dlink);
+        else
+            placeButton("Restore", $rlink);
         }//End of the while loop
     }//end of the if statement
     else {
