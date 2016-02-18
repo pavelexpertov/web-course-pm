@@ -16,6 +16,11 @@ foreach($listOfIncludes as $include)
 //--Just assign 1 to event's Archived and that's it.
 //--Return user back to where he came from
 
+$eveid = checkInt($_GET['eid']);
+
+$listOfVars = array($eveid);
+include "../../cms/verifydata/check_for_false_vars.inc.php";
+
 $query = "update Events set Archived = 1
           where EManagerID = ? and ID = ?";
 
@@ -25,7 +30,7 @@ if($stmt == false)
     echo "Ooop an error has happened at prepare statement line";
     exit();
 }
-$stmt->bind_param("ii", $_SESSION['usr']->id, $_GET['eid']);
+$stmt->bind_param("ii", $_SESSION['usr']->id, $eveid);
 $stmt->execute();
 $stmt->close();
 //Return the user to the userpage
