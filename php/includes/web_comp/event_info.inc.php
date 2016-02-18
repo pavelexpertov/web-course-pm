@@ -1,9 +1,19 @@
 <!-- The purpose of the section is to present information about the event -->
 <section>
     <?php
+        //including necessary validation and editing functions
+        include 'php/cms/verifydata/valid_serial_data.func.php';
+        include 'php/data_format/convert_date.func.php';
+        include 'php/data_format/truncate_time.func.php';
         //Pasting a small booking section so user can book the event.
         include 'php/includes/web_comp/bookingevent_small_section.inc.php';
         //Getting some information about the query
+
+        //Checking the data request from user
+        $eveid = checkInt($_GET['eid']);
+        $listOfVars = array($eveid);
+        include 'php/cms/verifydata/check_for_false_vars.inc.php';
+
         $fields = " evename, evedescr,
                     etypename, evedescr,
                     date, stime, ftime, noab, price,
@@ -19,7 +29,7 @@
             echo $resultEvents->error_list;
         }
 
-        $resultEvent->bind_param('i', $_GET['eid']);
+        $resultEvent->bind_param('i', $eveid);
         $resultEvent->execute();
         $resultEvent->bind_result($evename, $evedescr,
                     $etypename, $evedescr,
@@ -44,8 +54,9 @@
     </div>
         <h3>Event Location and Time </h3>
     <div>
-        <p>Start time: <?php echo $stime; ?></p>
-        <p>Finish time: <?php echo $ftime; ?></p>
+        <p>Date: <?php echo convertIsoDate($date); ?></p>
+        <p>Start time: <?php echo truncateTime($stime); ?></p>
+        <p>Finish time: <?php echo truncateTime($ftime); ?></p>
         <h4>Location: </h4>
         <p>Town: <?php echo $town;?></p>
         <p>Country: <?php echo $country; ?></p>
