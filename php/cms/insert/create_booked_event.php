@@ -9,6 +9,10 @@
     foreach($includes as $include)
         include $include;
 
+    $eveid = checkInt($_GET['eid']);
+    $listOfVars = array($eveid);
+    include 'php/cms/verifydata/check_for_false_vars.inc.php';
+
     //Making a query
     $query = "select ID from BookedEvents where eventid = ? and userid = ?";
     $stmt = $mysqli->prepare($query);
@@ -17,7 +21,7 @@
         echo "Oooops, something has happened while making a stmt";
         exit();
     }
-    $stmt->bind_param("ii", $_GET['eid'], $_SESSION['usr']->id);
+    $stmt->bind_param("ii", $eveid, $_SESSION['usr']->id);
     $stmt->execute();
     $stmt->store_result();
     //Gets a number of queries returned
@@ -50,7 +54,7 @@
         $stmt->close();
         //Create today's date for the booking in the correct format
         $cdate = date("Y-m-d");
-        $query = "insert into BookedEvents values(0, {$_GET['eid']},
+        $query = "insert into BookedEvents values(0, $eveid,
                  {$_SESSION['usr']->id}, $cdate, 0)";
         $stmt=$mysqli->query($query);
         if($stmt == false)
