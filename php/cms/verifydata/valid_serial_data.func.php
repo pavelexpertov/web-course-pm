@@ -67,4 +67,15 @@ function checkPassword($pwd)
     else
         return false;
 }
+
+function checkUsername($usrname)
+{
+    //Checking username if the first letter is alphabetic
+    //and the length is between 1 and 25 characters
+    if(preg_match("#^[a-zA-Z]\w{1,24}$#", $usrname))
+        return $usrname;
+    else {
+        return false;
+    }
+}
  ?>
