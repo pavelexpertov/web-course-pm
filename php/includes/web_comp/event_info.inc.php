@@ -2,7 +2,7 @@
 <section>
     <?php
         //including necessary validation and editing functions
-        include 'php/cms/verifydata/valid_serial_data.func.php';
+        //require 'php/cms/verifydata/valid_serial_data.func.php';
         include 'php/data_format/convert_date.func.php';
         include 'php/data_format/truncate_time.func.php';
         //Pasting a small booking section so user can book the event.
