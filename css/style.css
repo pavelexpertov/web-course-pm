@@ -188,3 +188,25 @@ aside h3 /*header for the whole section*/
    padding-left: 0px;
    margin-left: 0;
 }
+/*/////////////////////////
+   END OF Search page's result sections
+/////////////////////////*/
+
+/*/////////////////////////
+   Category section on the user page
+/////////////////////////*/
+
+#tabs-3
+{
+   overflow: auto;
+}
+
+#tabs-3 .category-item
+{
+   width: 50%;
+   float: left;
+}
+
+/*/////////////////////////
+   END OF Category section on the user page
+/////////////////////////*/
