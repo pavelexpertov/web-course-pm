@@ -1,4 +1,50 @@
 /*////////////////////////////
+Miscelanious stuff
+////////////////////////////*/
+
+.mybtn
+{
+   width: 75px;
+   border: 4px;
+   border-style: solid;
+   /*padding: 4px 5px 5px 12px;*/
+   margin-top: 5px;
+   background-color: black;
+   text-align: center;
+   
+}
+
+.mybtn:hover
+{
+   background-color: white;
+   
+}
+
+.mybtn a
+{
+   color: white; 
+}
+
+.mybtn a:link
+{
+   text-decoration:none;
+}
+.mybtn a:visited
+{
+   text-decoration:none;
+}
+.mybtn a:hover
+{
+   text-decoration:none;
+   color: black;
+}
+.mybtn a:active
+{
+   text-decoration:none;
+}
+
+
+/*////////////////////////////
    Main stuff for the page
 /////////////////////////////*/
 

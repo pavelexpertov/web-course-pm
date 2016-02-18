@@ -2,6 +2,7 @@
 include 'php/web_comp/time_ddlist.func.php';
 include 'php/web_comp/venue_ddlist.func.php';
 include 'php/web_comp/event_type_ddlist.func.php';
+include 'php/web_comp/button_element.func.php';
 
 ?>
 <form id="create-event" action="php/cms/insert/create_new_event.php" method="post">
@@ -36,7 +37,9 @@ include 'php/web_comp/event_type_ddlist.func.php';
 
       <label>Venue</label>
       <?php placeDDVenues("venueid"); ?>
+      <br>
       <input type="submit" value="Create a new event">
+      <?php placeButton("Cancel", "usr_page.php");?>
     </fieldset>
 
 
