@@ -44,3 +44,4 @@ include 'php/web_comp/button_element.func.php';
 
 
 </form>
+<?php if(isset($_SESSION['time_err'])) unset($_SESSION['time_err']);?>

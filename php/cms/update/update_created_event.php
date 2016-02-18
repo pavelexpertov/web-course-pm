@@ -9,18 +9,26 @@
 
   //The statement updates existing entries for event's data
   //The event's event's name and start time are updated
-
-  $eveid = $_POST['eid'];
-  $evename = $_POST['evename'];
-  $descr = $_POST['descr'];
-  $stime = $_POST['stime'];
-  $ftime = $_POST['ftime'];
-  $date = convertDate($_POST['date']);
-  $evetypeid = $_POST['evetype'];
-  $venueid = $_POST['venueid'];
+  $eveid = checkInt($_POST['eid']);
+  $evename = checkString($_POST['evename']);
+  $descr = checkString($_POST['descr']);
+  $stime = checkTime($_POST['stime']);
+  $ftime = checkTime($_POST['ftime']);
+  $date = checkDateF($_POST['date']);
+  $evetypeid = checkInt($_POST['evetype']);
+  $venueid = checkInt($_POST['venueid']);
 
   $listOfVars = array($eveid, $evename, $descr, $date, $stime, $ftime,
                         $evetypeid, $venueid);
+  include '../../cms/verifydata/check_for_false_vars.inc.php';
+
+  $date = convertDate($date);
+  if(!checkTimings($stime, $ftime))
+  {
+      $_SESSION['time_err'] = "You need to make starting time earlier than finishing time";
+      header("Location: {$_SERVER['HTTP_REFERER']}");
+      exit();
+  }
 
   $columns = "Name = ?, Description = ?,
               Date = ?, StartTime = ?, FinishTime = ?,

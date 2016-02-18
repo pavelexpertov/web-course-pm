@@ -89,17 +89,4 @@
 
 
 </form>
-
-
-
-
-<!-- <form action="php/cms/update/update_created_event.php" method="post">
-  <fieldset>
-    <legend>Edit your event</legend>
-    <label> Event Name</label>
-    <input type="text" name="evename" id="evename" value = "<?php echo $evename; ?>" >
-    <textarea name="descr" id="descr"><?php echo $evedescr; ?> </textarea>
-    <input type="hidden" name="eid" id="eid" value="<?php echo $eveid; ?>">
-    <input type="submit" value="Send the changes">
-  </fieldset>
-</form>-->
+<?php if(isset($_SESSION['time_err'])) unset($_SESSION['time_err']);?>
