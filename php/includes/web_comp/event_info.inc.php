@@ -2,11 +2,11 @@
 <section>
     <?php
         //including necessary validation and editing functions
-        //require 'php/cms/verifydata/valid_serial_data.func.php';
-        include 'php/data_format/convert_date.func.php';
-        include 'php/data_format/truncate_time.func.php';
         //Pasting a small booking section so user can book the event.
         include 'php/includes/web_comp/bookingevent_small_section.inc.php';
+        include_once 'php/cms/verifydata/valid_serial_data.func.php';
+        include_once 'php/data_format/convert_date.func.php';
+        include_once 'php/data_format/truncate_time.func.php';
         //Getting some information about the query
 
         //Checking the data request from user

@@ -2,7 +2,7 @@
 // The purpose of this page is to make a search query based on
 // query that came either from simple or advanced search bar.
 
-    include 'php/data_format/convert_date.func.php';
+    include_once 'php/data_format/convert_date.func.php';
     //The include gives a function that will output the result of the events.
     // include 'php/web_comp/result_events.func.php';
     //The variable below will be passed to a function, which will
