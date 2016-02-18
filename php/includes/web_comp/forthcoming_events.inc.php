@@ -21,11 +21,11 @@ and locations) -->
     ?>
     <div class="forth_events">
         <ul>
-            <li> <?php echo $event['ename'];   ?> </li>
-            <li> <?php echo convertIsoDate($event['date']);   ?> </li>
-            <li> <?php echo truncateTime($event['time']);   ?> </li>
-            <li> <?php echo $event['town'];    ?></li>
-            <li> <?php echo $event['country'];    ?></li>
+            <li><?php echo $event['ename'];   ?> </li>
+            <li><?php echo convertIsoDate($event['date']);   ?> </li>
+            <li>Starts at <?php echo truncateTime($event['time']);   ?> </li>
+            <li><?php echo $event['town'];    ?></li>
+            <li><?php echo $event['country'];    ?></li>
         </ul>
         <?php
         $link = "event_info.php?eid={$event['id']}";
