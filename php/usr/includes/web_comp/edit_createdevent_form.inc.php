@@ -5,9 +5,19 @@
     include 'php/web_comp/time_ddlist.func.php';
     include 'php/web_comp/venue_ddlist.func.php';
     include 'php/web_comp/event_type_ddlist.func.php';
+    include 'php/web_comp/button_element.func.php';
     include 'php/data_format/truncate_time.func.php';
     include 'php/data_format/convert_date.func.php';
-  $eveid = $_GET['eid'];
+    include 'php/cms/verifydata/valid_serial_data.func.php';
+
+    /*if(isset($_SESSION['time_err']))
+        unset($_SESSION['time_err']);*/
+
+  $eveid = checkInt($_GET['eid']);
+
+  $listOfVars = array();
+  $listOfVars[] = $eveid;
+    include 'php/cms/verifydata/check_for_false_vars.inc.php';
 
   $columns = "Name, Description,
               Date, StartTime, FinishTime,
@@ -59,6 +69,13 @@
       <label>Finish Time</label>
       <?php placeDDTime("ftime", truncateTime($ftime)); ?>
       <br>
+      <?php if(isset($_SESSION['time_err']))
+      {
+          ?>
+          <p><?php echo $_SESSION['time_err']; ?></p>
+          <?php
+      }
+      ?>
       <label>Event Type</label>
       <?php placeDDEventTypes("evetype"); ?>
       <br>
@@ -67,6 +84,7 @@
       <br>
       <input type="hidden" name="eid" id="eid" value="<?php echo $eveid; ?>">
       <input type="submit" value="Save changes">
+      <?php placeButton("Cancel", "usr_page.php");?>
     </fieldset>
 
 
