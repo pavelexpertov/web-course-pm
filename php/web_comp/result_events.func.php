@@ -5,6 +5,8 @@
 
 function placeEventResult(&$queryResult)
 {
+    include_once 'php/data_format/convert_date.func.php';
+    include_once 'php/data_format/truncate_time.func.php';
     $queryResult->bind_result($eveid, $name, $etype, $date, $stime, $ftime, $town, $country, $price);
     // echo "the result_events function has been called ";
     // $queryResult->bind_result($eveid, $name);
@@ -24,12 +26,11 @@ function placeEventResult(&$queryResult)
     </h3>
 
     <ul>
-        <li> Event Type: <?php echo $etype?> </li>
-        <li> Date: <?php echo $date?> </li>
-        <li> Start Time: <?php echo $stime?> </li>
-        <li> Finish Time: <?php echo $ftime ?> </li>
-        <li> Location: <?php echo $town . ", " . $country ?> </li>
-        <li> Price: <?php echo $price ?> </li>
+        <li> Event Type: <?php echo $etype;?> </li>
+        <li> Date: <?php echo convertIsoDate($date);?> </li>
+        <li> Start Time: <?php echo truncateTime($stime);?> </li>
+        <li> Finish Time: <?php echo truncateTime($ftime); ?> </li>
+        <li> Location: <?php echo $town . ", " . $country; ?> </li>
     </ul>
 </div>
 

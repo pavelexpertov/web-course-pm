@@ -3,8 +3,8 @@
         //The purpose of the section is to provide the funcitonality to
         //book an event depending on what user's session is
         //Necessary validation functions
-        include 'php/cms/verifydata/valid_serial_data.func.php';
-        include 'php/web_comp/button_element.func.php';
+        include_once 'php/cms/verifydata/valid_serial_data.func.php';
+        include_once 'php/web_comp/button_element.func.php';
 
         //If the user is logged in
         if(isset($_SESSION['usr']))
