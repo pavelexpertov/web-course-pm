@@ -161,7 +161,30 @@ aside h3 /*header for the whole section*/
 {
    padding-left: 23px;
 }
-
 /*///////////////////////////
    END OF Forthcoming events section's rules
 ///////////////////////////*/
+
+/*/////////////////////////
+   Search page's result sections
+/////////////////////////*/
+.eventresult h3
+{
+   margin-left: 23px;
+}
+.eventresult .mybtn
+{
+   margin-left: 23px;
+   margin-bottom: 9px;
+}
+.eventresult ul
+{
+   list-style-type: none;
+   padding-left: 23px;
+   
+}
+.eventresult ul li
+{
+   padding-left: 0px;
+   margin-left: 0;
+}

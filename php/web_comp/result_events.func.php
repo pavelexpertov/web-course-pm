@@ -7,6 +7,7 @@ function placeEventResult(&$queryResult)
 {
     include_once 'php/data_format/convert_date.func.php';
     include_once 'php/data_format/truncate_time.func.php';
+    include_once 'php/web_comp/button_element.func.php';
     $queryResult->bind_result($eveid, $name, $etype, $date, $stime, $ftime, $town, $country, $price);
     // echo "the result_events function has been called ";
     // $queryResult->bind_result($eveid, $name);
@@ -20,9 +21,7 @@ function placeEventResult(&$queryResult)
 <div class='eventresult'>
     <h3>
         <?php $elink = "event_info.php?eid=$eveid"; ?>
-        <a href='<?php echo $elink; ?>'>
-            <?php echo $name; ?>
-        </a>
+        <?php echo $name; ?>
     </h3>
 
     <ul>
@@ -32,6 +31,7 @@ function placeEventResult(&$queryResult)
         <li> Finish Time: <?php echo truncateTime($ftime); ?> </li>
         <li> Location: <?php echo $town . ", " . $country; ?> </li>
     </ul>
+    <?php placeButton("More Info", $elink);?>
 </div>
 
 <?php
