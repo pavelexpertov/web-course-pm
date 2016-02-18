@@ -4,11 +4,12 @@
 
 include '../../web_comp/place_sess_db_include.func.php';
 $listOfIncludes = placeSDIncludes(2, true);
-
-print_r($listOfIncludes);
-
 foreach($listOfIncludes as $include)
     include $include;
+
+$eveid = checkInt($_GET['eid']);
+$listOfVars = array($eveid);
+include '../../cms/vefifydata/check_for_false_vars.inc.php';
 
 //Deleting an event by assigning a flag to the event.
 //--using post method to transfer id of the event.
@@ -25,7 +26,7 @@ if($stmt == false)
     echo "Ooop an error has happened at prepare statement line";
     exit();
 }
-$stmt->bind_param("ii", $_GET['eid'], $_SESSION['usr']->id);
+$stmt->bind_param("ii", $eveid, $_SESSION['usr']->id);
 $stmt->execute();
 $stmt->close();
 //Return the user to the userpage
