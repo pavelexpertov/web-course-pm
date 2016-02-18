@@ -20,12 +20,14 @@
         $sesspath = $spacing . 'conn_sess/sess.inc.php';
         $convertdate = $spacing . 'data_format/convert_date.func.php';
         $truncatetime = $spacing . 'data_format/truncate_time.func.php';
+        $validfuncs = $spacing . 'cms/verifydata/valid_serial_data.func.php';
 
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
         $listIncludes[] = $errpath;
         $listIncludes[] = $convertdate;
         $listIncludes[] = $truncatetime;
+        $listIncludes[] = $validfuncs;
 
         //If I want to check that the user is registered and logged in.
         if($legituser)

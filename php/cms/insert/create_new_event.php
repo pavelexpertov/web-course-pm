@@ -7,13 +7,33 @@
     include $include;
 
   //Creating variables for input
-  $evename = $_POST['evename'];
-  $descr = $_POST['descr'];
-  $stime = $_POST['stime'];
-  $ftime = $_POST['ftime'];
-  $date = convertDate($_POST['date']);
-  $evetypeid = $_POST['evetype'];
-  $venueid = $_POST['venueid'];
+  $evename = checkString($_POST['evename']);
+  $descr = checkString($_POST['descr']);
+  $stime = checkTime($_POST['stime']);
+  $ftime = checkTime($_POST['ftime']);
+  $date = checkDateF($_POST['date']);
+  $evetypeid = checkInt($_POST['evetype']);
+  $venueid = checkInt($_POST['venueid']);
+
+  //Checking for incorrect input
+  $listOfVars = array();
+  $listOfVars = $evename;
+  $listOfVars = $descr;
+  $listOfVars = $stime;
+  $listOfVars = $ftime;
+  $listOfVars = $date;
+  $listOfVars = $evetypeid;
+  $listOfVars = $venueid;
+
+  include '../../cms/verifydata/check_for_false_vars.inc.php';
+
+  $date = convertDate($date);
+  if(!checkTimings($stime, $ftime))
+  {
+      $_SESSION['time_err'] = "You need to make starting time earlier than finishing time";
+      header("Location: {$_SERVER['HTTP_REFERER']}");
+      exit();
+  }
 
   $columns = "ID, Name, Description, EManagerID,
               Date, StartTime, FinishTime,
