@@ -6,6 +6,9 @@
         <label for="lname">Surname</label>
         <input type="text" name="lname" id="lname">
         <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+        <br>
         <label for="usrname">Enter your username</label>
         <input type="text" name="usrname" id="usrname">
         <?php if(isset($_GET['ue'])) { ?>

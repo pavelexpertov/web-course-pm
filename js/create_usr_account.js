@@ -15,6 +15,10 @@ $("#create-usr-account").validate({
             required: true,
             maxlength: 25
         },
+        email: {
+            required: true,
+            email: true
+        },
         job: {
             required: true,
             maxlength: 25
