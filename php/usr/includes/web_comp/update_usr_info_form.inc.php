@@ -16,7 +16,7 @@
     $stmt->fetch();
     $stmt->close();
  ?>
-<form id="update-info" action="php/cms/update/" method="post">
+<form id="update-info" action="php/cms/update/update_usr_info.php" method="post">
     <fieldset>
         <legend>Change your personal information</legend>
     <label for="fname">First Name</label>
