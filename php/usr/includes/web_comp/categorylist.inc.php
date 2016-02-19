@@ -60,7 +60,7 @@
     <?php
     $dlink = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
     $elink = "edit_venue.php?vid={$venue['ID']}";
-    $rlink = "php/cms/update/restore_event_type.php";
+    $rlink = "php/cms/update/restore_venue.inc.php?vid={$venue['ID']}";
         placeButton("Edit", $elink);
         if($venue['Archived'] != 1)
             placeButton("Delete", $dlink);

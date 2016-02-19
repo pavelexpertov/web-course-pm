@@ -16,7 +16,7 @@ include '../../cms/verifydata/check_for_false_vars.inc.php';
 //--Just assign 1 to booked event's Archived and that's it.
 //--Return user back to where he came from
 
-$query = "update Venues set Archived = 1
+$query = "update Venues set Archived = 0
           where ID = ? and ManagerID = ?";
 
 $stmt = $mysqli->prepare($query);
