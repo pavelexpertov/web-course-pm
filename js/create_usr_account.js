@@ -7,6 +7,18 @@ $.validator.addMethod("pwdRegex", function(value, element) {
 //Adding validation rules
 $("#create-usr-account").validate({
     rules: {
+        fname: {
+            required: true,
+            maxlength: 25
+        },
+        lname: {
+            required: true,
+            maxlength: 25
+        },
+        job: {
+            required: true,
+            maxlength: 25
+        },
         usrname: {
             required: true,
             maxlength: 25,
