@@ -6,6 +6,11 @@
   foreach($list as $include)
     include $include;
 
+  $ename = checkString($_POST['ename']);
+  $descr = checkString($_POST['ename']);
+  $listOfVars = array($ename, $descr);
+  include '../../cms/verifydata/check_for_false_vars.inc.php';
+
   $columns = "ID, Name, Description, ManagerID";
 
   $query = "insert into EventTypes($columns)
@@ -19,7 +24,7 @@
       echo "<br>"; echo $mysqli->error;
       exit();
   }
-  $stmt->bind_param("ssi", $_POST['ename'], $_POST['descr'], $_POST['usrid']);
+  $stmt->bind_param("ssi", $ename, $descr, $_SESSION['usr']->id);
   $stmt->execute();
   $stmt->close();
   //Redirect user back to usr page
