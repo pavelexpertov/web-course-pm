@@ -10,4 +10,12 @@ function placeButton($text, $link)
     </div>
     <?php
 }
+function placeWideButton($text, $link)
+{
+    ?>
+    <div class="mywidebtn">
+        <a href="<?php echo $link;?>"><?php echo $text;?></a>
+    </div>
+    <?php
+}
  ?>

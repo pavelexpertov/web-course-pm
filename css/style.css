@@ -2,6 +2,47 @@
 Miscelanious stuff
 ////////////////////////////*/
 
+.mywidebtn
+{
+   width: 305px;
+   border: 4px;
+   border-style: solid;
+   /*padding: 4px 5px 5px 12px;*/
+   margin-top: 5px;
+   background-color: black;
+   text-align: center;
+   
+}
+
+.mywidebtn:hover
+{
+   background-color: white;
+   
+}
+
+.mywidebtn a
+{
+   color: white; 
+}
+
+.mywidebtn a:link
+{
+   text-decoration:none;
+}
+.mywidebtn a:visited
+{
+   text-decoration:none;
+}
+.mywidebtn a:hover
+{
+   text-decoration:none;
+   color: black;
+}
+.mywidebtn a:active
+{
+   text-decoration:none;
+}
+
 .mybtn
 {
    width: 75px;
@@ -42,6 +83,7 @@ Miscelanious stuff
 {
    text-decoration:none;
 }
+
 
 #forthcoming_events .mybtn
 {
