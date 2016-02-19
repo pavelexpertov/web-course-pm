@@ -95,7 +95,7 @@ header ul
    padding: 0;
    overflow: hidden;
    background-color: #333;
-   width: 500px;
+   /*! width: 500px; */
 }
 header li
 {
