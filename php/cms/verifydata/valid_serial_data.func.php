@@ -9,9 +9,16 @@ function checkInt($number)
     return filter_var($num, FILTER_VALIDATE_INT);
 }
 
-function checkString($string)
+function checkString($string, $length = false)
 {
     $s = filter_var($string, FILTER_SANITIZE_STRING);
+    if($length != false)
+    {
+        if($length >= strlen($s))
+            return $s;
+        else
+            return false;
+    }
     return $s;
 }
 
@@ -96,5 +103,14 @@ function checkCheckbox($cbx)
         return true;
     else
         return false;
+}
+
+function checkEmail($email)
+{
+    //The function serialises the string and then uses
+    //validation methods to check the email format
+    $e = checkString($email);
+    $e = filter_var($e, FILTER_VALIDATE_EMAIL);
+    return $e;
 }
  ?>
