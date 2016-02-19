@@ -25,7 +25,7 @@
             <?php
     $elink = "edit_event_type.php?etid={$venue['ID']}";
     $dlink = "php/cms/delete/delete_event_type.inc.php?etid={$venue['ID']}";
-    $rlink = "#";
+    $rlink = "php/cms/update/restore_event_type.php?etid={$venue['ID']}";
             placeButton("Edit", $elink);
             if($venue['Archived'] != 1)
                 placeButton("Delete", $dlink);
@@ -60,7 +60,7 @@
     <?php
     $dlink = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
     $elink = "edit_venue.php?vid={$venue['ID']}";
-    $rlink = "#";
+    $rlink = "php/cms/update/restore_event_type.php";
         placeButton("Edit", $elink);
         if($venue['Archived'] != 1)
             placeButton("Delete", $dlink);

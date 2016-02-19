@@ -9,7 +9,7 @@
       <br>
       <textarea id="descr" name="descr"></textarea>
       <br>
-      <input type="submit" value="Create a new venue">
+      <input type="submit" value="Create a new event type">
       <?php placeButton("Cancel", "usr_page.php");?>
     </fieldset>
 </form>
