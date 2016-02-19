@@ -2,20 +2,21 @@
     <form action="php/cms/insert/create_new_user.php" method="post">
         <label for="usrname">Enter your username</label>
         <input type="text" name="usrname" id="usrname">
-
-        <label for="usrpwd">Enter your username</label>
+        <br>
+        <label for="usrpwd">Enter your password</label>
         <input type="text" name="usrpwd" id="usrpwd">
-
-        <label for="bio_cbx">Enter your username</label>
+        <br>
+        <label for="reppwd">Repeat your password</label>
+        <input type="text" name="reppwd" id="reppwd">
+        <br>
         <input type="checkbox" name="bio_cbx" id="bio_cbx">
+        <label for="bio_cbx">Check if you are an event manager and then fill in the box</label>
+        <br>
+        <label>Enter your biography (optional)</label>
+        <textarea id="biodesc" name="biodesc"></textarea>
+        <br>
+        <input type="submit" value="Create user account">
 
-        <textarea id="biodesc" name="biodesc"> </textarea>
-
-        <input type="submit" value="Create an account">
-
-<?php
-    print_r($_POST);
-?>
     </form>
 
     <div class="error-section">
