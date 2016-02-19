@@ -5,6 +5,7 @@
 - a simple search bar (which needs to be implemented as an include) -->
 <header>
     <!-- <img id="header_logo"> -->
+    <h1>CoderConf</h1>
     <nav>
         <ul>
             <li> <a href="index.php">Home</a></li>
