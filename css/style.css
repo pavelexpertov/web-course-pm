@@ -119,6 +119,11 @@ header li a:hover
    float: right;
 }
 
+header label
+{
+   color: white;
+}
+
 /*////////////////////////////
    END OF Header's contents rules
 /////////////////////////////*/

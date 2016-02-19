@@ -1,4 +1,3 @@
-<ul style="float:right;list-style-type:none;">
     <?php
     if(!isset($_SESSION['usr'])){ ?>
 
@@ -13,4 +12,3 @@
     <li><a href='logout_logic.php'> log out </a></li>
 
     <?php }//End of the else clause?>
-</ul>
