@@ -26,7 +26,7 @@
     $listOfVars = array($usrname, $usrpwd);
     include 'php/cms/verifydata/check_for_false_vars.inc.php';
 
-    $query = "select ID, Username, Password from Users where Username = ?";
+    $query = "select ID, Username, Password, EventAdmin from Users where Username = ?";
     $querystmt = $mysqli->prepare($query);
     $querystmt->bind_param('s', $usrname);
     if($querystmt == false){
@@ -47,7 +47,7 @@
         exit();
     }
 
-    $querystmt->bind_result($usrid, $usrname2, $usrpwd2);
+    $querystmt->bind_result($usrid, $usrname2, $usrpwd2, $eveadm);
     $querystmt->fetch();
     $querystmt->close();
     if($usrpwd2 != $usrpwd)
@@ -63,6 +63,10 @@
         $userobj->id = $usrid;
         $userobj->usrname = $usrname2;
         $userobj->usrpwd = $usrpwd2;
+        if($eveadm == 0)
+            $userobj->eveadmin = false;
+        else
+            $userobj->eveadmin = true;
         $_SESSION['usr'] = $userobj;
         header("Location: ../../../index.php");
         exit();
