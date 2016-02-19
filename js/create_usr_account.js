@@ -1,5 +1,5 @@
 $.validator.addMethod("usrnameRegex", function(value, element) {
-       return this.optional(element) || /^[a-z0-9\-]+$/i.test(value);
+       return this.optional(element) || /^[a-zA-Z]\w{1,24}$/i.test(value);
 }, "Username must contain only letters, numbers, or dashes.");
 $.validator.addMethod("pwdRegex", function(value, element) {
        return this.optional(element) || /^[a-zA-Z]\w{3,14}$/i.test(value);
@@ -10,6 +10,7 @@ $("#create-usr-account").validate({
         usrname: {
             required: true,
             maxlength: 25,
+            minlength: 2,
             usrnameRegex: true
         },
         usrpwd: {
@@ -26,8 +27,8 @@ $("#create-usr-account").validate({
     messages: {
         usrname: {
             required: "It needs to be filled in",
-            maxlength: "Username must be 25 characters long",
-            usrnameRegex: "Username must not contain !"
+            maxlength: "Username must be at most 25 characters long",
+            usrnameRegex: "First character must be a letter"
         },
         usrpwd: {
             required: "You must enter your password",
@@ -36,6 +37,7 @@ $("#create-usr-account").validate({
             pwdRegex: "First character must be a letter"
         },
         reppwd: {
+            required: "You msut re-enter the password",
             equalTo: "Passwords do not match"
         }
     }
