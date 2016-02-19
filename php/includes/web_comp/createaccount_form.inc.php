@@ -1,5 +1,5 @@
 <section>
-    <form action="php/cms/insert/create_new_user.php" method="post">
+    <form id="create-usr-account" action="php/cms/insert/create_new_user.php" method="post">
         <label for="usrname">Enter your username</label>
         <input type="text" name="usrname" id="usrname">
         <br>
