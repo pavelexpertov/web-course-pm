@@ -3,6 +3,7 @@
 // query that came either from simple or advanced search bar.
 
     include_once 'php/data_format/convert_date.func.php';
+    include_once 'php/cms/verifydata/valid_serial_data.func.php';
     //The include gives a function that will output the result of the events.
     // include 'php/web_comp/result_events.func.php';
     //The variable below will be passed to a function, which will
@@ -12,15 +13,15 @@
     //This is a set of variables that will contain arguments for the search query
 
     if(isset($_GET['simplesearch']) && $_GET['simplesearch'] != "")
-        $simpleSearch = $_GET['simplesearch'];
+        $simpleSearch = checkString($_GET['simplesearch']);
     if(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
-        $advancedSearch = $_GET['adv-search'];
+        $advancedSearch = checkString($_GET['adv-search']);
     if(isset($_GET['date']) && $_GET['date'] != "")
-        $date = convertDate($_GET['date']);
+        $date = checkDateF($_GET['date']);
     if(isset($_GET['venueid']) && $_GET['venueid'] != "all")
-        $venueId = $_GET['venueid'];
+        $venueId = checkInt($_GET['venueid']);
     if(isset($_GET['evetype']) && $_GET['evetype'] != "all")
-        $eveType = $_GET['evetype'];
+        $eveType = checkInt($_GET['evetype']);
 
     $listOfVars = array();
     if(isset($_GET['simplesearch']) && $_GET['simplesearch'] != "")
@@ -38,6 +39,8 @@
     if(count($listOfVars) != 0)
         include 'php/cms/verifydata/check_for_false_vars.inc.php';
 
+    if(isset($date))
+        $date = convertDate($date);
     //These variables are used so I can customise the query easily
     //in mulitple if conditions
     $fields = " eveid, evename, etypename, date, stime, ftime, town, country, price";
