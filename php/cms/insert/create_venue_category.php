@@ -6,6 +6,14 @@
   foreach($list as $include)
     include $include;
 
+  $vname = checkString($_POST['vname']);
+  $addrss = checkString($_POST['addrss']);
+  $town = checkString($_POST['town']);
+  $country = checkString($_POST['country']);
+  $cap = checkString($_POST['cap']);
+  $listOfVars = array($vname, $addrss, $town, $country, $cap);
+  include '../../cms/verifydata/check_for_false_vars.inc.php';
+
   $columns = "ID, Name, Address, Town, Country, Capacity, ManagerID";
 
   $query = "insert into Venues($columns)
@@ -18,8 +26,8 @@
       echo "<br>"; echo $mysqli->error;
       exit();
   }
-  $stmt->bind_param("ssssii", $_POST['vname'], $_POST['addrss'],
-  $_POST['town'], $_POST['country'], $_POST['cap'], $_POST['usrid']);
+  $stmt->bind_param("ssssii", $vname, $addrss,
+  $town, $country, $cap, $_SESSION['usr']->id);
                     //$_SESSION['usr']->id);
   $stmt->execute();
   $stmt->close();
