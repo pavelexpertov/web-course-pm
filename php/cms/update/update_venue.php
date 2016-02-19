@@ -7,6 +7,15 @@
   foreach($list as $include)
     include $include;
 
+  $vname = checkString($_POST['vname']);
+  $addrss = checkString($_POST['addrss']);
+  $town = checkString($_POST['town']);
+  $country = checkString($_POST['country']);
+  $cap = checkString($_POST['cap']);
+  $vid = checkInt($_POST['vid']);
+  $listOfVars = array($vname, $addrss, $town, $country, $cap, $vid);
+  include '../../cms/verifydata/check_for_false_vars.inc.php';
+
   //The statement updates existing entries for event's data
   //The event's event's name and start time are updated
   $query = "update Venues set Name = ?, Address = ?,
@@ -21,9 +30,9 @@
       exit();
   }
 
-  $stmt->bind_param("ssssiii", $_POST['vname'],$_POST['addrss'],
-                    $_POST['town'], $_POST['country'],$_POST['cap'],
-                    $_SESSION['usr']->id,$_POST['vid']);
+  $stmt->bind_param("ssssiii", $vname, $addrss,
+                    $town, $country, $cap,
+                    $_SESSION['usr']->id, $vid);
   $stmt->execute();
   $stmt->close();
   //Return the user to the userpage
