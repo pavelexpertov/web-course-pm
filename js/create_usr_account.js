@@ -8,6 +8,9 @@ $("#create-usr-account").validate({
         usrpwd: {
             required: true,
             maxlength: 25
+        },
+        reppwd: {
+            equalTo: "#usrpwd"
         }
     },
     messages: {
@@ -18,6 +21,9 @@ $("#create-usr-account").validate({
         usrpwd: {
             required: "You must enter your password",
             maxlength: "Your password must be 25 characters long"
+        },
+        reppwd: {
+            equalTo: "Passwords do not match"
         }
     }
 }//End of outer validate function

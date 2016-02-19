@@ -9,10 +9,12 @@
         <label for="reppwd">Repeat your password</label>
         <input type="text" name="reppwd" id="reppwd">
         <br>
+        <br>
         <input type="checkbox" name="bio_cbx" id="bio_cbx">
         <label for="bio_cbx">Check if you are an event manager and then fill in the box</label>
         <br>
         <label>Enter your biography (optional)</label>
+        <br>
         <textarea id="biodesc" name="biodesc"></textarea>
         <br>
         <input type="submit" value="Create user account">

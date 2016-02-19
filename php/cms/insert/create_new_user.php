@@ -12,6 +12,9 @@ if(isset($_SESSION['err']))
 {
     unset($_SESSION['err']);
 }
+
+exit();
+
 //First stage is to collect some needed info to check against (i.e. existing username)
 $query = "select Username from Users where Username = ?";
 $usrnamestmt = $mysqli->prepare($query);
