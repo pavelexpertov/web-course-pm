@@ -12,5 +12,5 @@
     //Adding section designated for event_info.php
     $includeList[] = 'php/includes/sections/createaccount_section.inc.php';
 
-    placeBodyElement($includeList, "js/create_usr_account.js");
+    placeBodyElement($includeList);
 ?>
