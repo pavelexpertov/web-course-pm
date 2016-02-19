@@ -7,7 +7,7 @@
     include $include;
 
   $ename = checkString($_POST['ename']);
-  $descr = checkString($_POST['ename']);
+  $descr = checkString($_POST['descr']);
   $listOfVars = array($ename, $descr);
   include '../../cms/verifydata/check_for_false_vars.inc.php';
 

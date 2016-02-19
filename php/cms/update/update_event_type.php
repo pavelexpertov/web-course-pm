@@ -7,6 +7,12 @@
   foreach($list as $include)
     include $include;
 
+  $ename = checkString($_POST['ename']);
+  $descr = checkString($_POST['descr']);
+  $etid = checkInt($_POST['etid']);
+  $listOfVars = array($ename, $descr, $etid);
+  include '../../cms/verifydata/check_for_false_vars.inc.php';
+
   //The statement updates existing entries for event's data
   //The event's event's name and start time are updated
   $query = "update EventTypes set Name = ?, Description = ?
@@ -20,8 +26,8 @@
       exit();
   }
 
-  $stmt->bind_param("ssii", $_POST['ename'],$_POST['descr'],
-                    $_SESSION['usr']->id,$_POST['etid']);
+  $stmt->bind_param("ssii", $ename, $descr,
+                    $_SESSION['usr']->id, $etid);
   $stmt->execute();
   $stmt->close();
   //Return the user to the userpage
