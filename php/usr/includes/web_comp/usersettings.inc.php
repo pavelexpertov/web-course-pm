@@ -6,9 +6,9 @@
 	placeWideButton("Change your password", "usersettings.php?pwd=");
 	placeWideButton("Change your details", "usersettings.php?usrinfo=");
 	if($_SESSION['usr']->eveadmin)
-		placeWideButton("Deactivate Admin Features", "php/cms/update");
+		placeWideButton("Deactivate Admin Features", "php/cms/update/toggling_admin_rights.php");
 	else
-		placeWideButton("Activate Admin Features", "php/cms/update");
+		placeWideButton("Activate Admin Features", "php/cms/update/toggling_admin_rights.php");
 
 	?>
 </div>
