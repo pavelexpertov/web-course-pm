@@ -16,6 +16,7 @@ if(isset($_SESSION['err']))
 $fname = checkString($_POST['fname'], 25);
 $lname = checkString($_POST['lname'], 25);
 $job = checkString($_POST['job'], 25);
+$email = checkEmail($_POST['email']);
 $usrname = checkUsername($_POST['usrname']);
 $usrpwd = checkPassword($_POST['usrpwd']);
 $reppwd = arePasswordsEqual($usrpwd, $_POST['reppwd']);
@@ -64,12 +65,39 @@ elseif($numOfQueries > 1)
     exit();
 }
 
+//Second stage is to check if the email already exists
+$query = "select Email from Users where Email = ?";
+$usrnamestmt = $mysqli->prepare($query);
+$usrnamestmt->bind_param('s', $email);
+$usrnamestmt->execute();
+$usrnamestmt->store_result();
+$numOfQueries = $usrnamestmt->num_rows;
+//Second stage is to compare the email against the post's
+if($numOfQueries == 1)
+{
+    $usrnamestmt->bind_result($emailExists);
+    $usrnamestmt->close();
+    if($emailExists == $email)
+        $_SESSION['ee'] = "The email already exists";
+    $returnaddress = $_SERVER['HTTP_REFERER'] . "?ee=The email already exists";
+    header("Location: $returnaddress");
+    exit();
+}
+elseif($numOfQueries > 1)
+{
+    $_SESSION['err'] = "For some reason you got more than one query you asked for, for username or email";
+    header("Location: {$_SERVER['HTTP_REFERER']}");
+    exit();
+}
+
+
 //If all passed, you can insert the info into the database
 if(isset($evemancbx) && $evemancbx) //If it's an event manager
 {
 $query = "insert into Users(ID, Username,
-                Password, Description, EventAdmin, CurrentJob, FirstName, LastName)
-          values(0, ?, ?, ?, 1, ?, ?, ?)";
+                Password, Description, EventAdmin,
+                CurrentJob, FirstName, LastName, Email)
+          values(0, ?, ?, ?, 1, ?, ?, ?, ?)";
 $insertstmt = $mysqli->prepare($query);
 if($insertstmt == false)
 {
@@ -77,7 +105,9 @@ if($insertstmt == false)
     echo $mysqli->error;
     exit();
 }
-$insertstmt->bind_param('sss', $usrname, $usrpwd, $biodesc);
+$insertstmt->bind_param('sssssss', $usrname,
+                            $usrpwd, $biodesc,
+                            $job, $fname, $lname, $email);
 if($insertstmt == false)
 {
     echo "Oppppps, error happened while inserting";
@@ -89,16 +119,16 @@ $insertstmt->close();
 else //If it's just the user
 {
     $query = "insert into Users(ID, Username,
-                    Password, EventAdmin)
-              values(0, ?, ?, 0)";
+                    Password, EventAdmin, CurrentJob, FirstName, LastName, Email)
+              values(0, ?, ?, 0, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
     if($stmt == false)
     {
         echo "An error happened for the prepared statement within else clause";
-        echo $mysqli->error;
+        echo "<br>" . $mysqli->error_list;
         exit();
     }
-    $stmt->bind_param('ss', $usrname, $usrpwd);
+    $stmt->bind_param('ssssss', $usrname, $usrpwd, $job, $fname, $lname, $email);
     $stmt->execute();
     $stmt->close();
 }
