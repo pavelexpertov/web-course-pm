@@ -68,6 +68,16 @@ function checkPassword($pwd)
         return false;
 }
 
+function arePasswordsEqual($p1, $p2)
+{
+    if($p1 == false || $p2 == false)
+        return false;
+    if($p1 == $p2)
+        return true;
+    else
+        return false;
+}
+
 function checkUsername($usrname)
 {
     //Checking username if the first letter is alphabetic
@@ -77,5 +87,14 @@ function checkUsername($usrname)
     else {
         return false;
     }
+}
+
+function checkCheckbox($cbx)
+{
+    //Purpose if the checkbox contains two letters
+    if(count($cbx) == 1 && $cbx == "on")
+        return true;
+    else
+        return false;
 }
  ?>

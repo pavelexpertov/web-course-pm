@@ -12,10 +12,34 @@ if(isset($_SESSION['err']))
 {
     unset($_SESSION['err']);
 }
+
+$usrname = checkUsername($_POST['usrname']);
+$usrpwd = checkPassword($_POST['usrpwd']);
+$reppwd = arePasswordsEqual($usrpwd, $_POST['reppwd']);
+if(isset($_POST['bio_cbx']) && isset($_POST['biodesc']))
+{
+    $evemancbx = checkCheckbox($_POST['bio_cbx']);
+    if($_POST['biodesc'] != "")
+        $biodesc = checkString($_POST['biodesc']);
+    else
+        $biodesc = "No description";
+}
+
+$listOfVars = array();
+$listOfVars[] = $usrname;
+$listOfVars[] = $usrpwd;
+$listOfVars[] = $reppwd;
+if(isset($_POST['bio_cbx']) && isset($_POST['biodesc']))
+{
+    $listOfVars[] = $evemancbx;
+    $listOfVars[] = $biodesc;
+}
+include '../../cms/verifydata/check_for_false_vars.inc.php';
+
 //First stage is to collect some needed info to check against (i.e. existing username)
 $query = "select Username from Users where Username = ?";
 $usrnamestmt = $mysqli->prepare($query);
-$usrnamestmt->bind_param('s', $_POST['usrname']);
+$usrnamestmt->bind_param('s', $usrname);
 $usrnamestmt->execute();
 $usrnamestmt->store_result();
 $numOfQueries = $usrnamestmt->num_rows;
@@ -25,8 +49,9 @@ if($numOfQueries == 1)
     $usrnamestmt->bind_result($existusrname);
     $usrnamestmt->close();
     if($existusrname == $_POST['usrname'])
-        $_SESSION['err'] = "The username already exists";
-    header("Location: {$_SERVER['HTTP_REFERER']}");
+        $_SESSION['ue'] = "The username already exists";
+    $returnaddress = $_SERVER['HTTP_REFERER'] . "?ue=The username already exists";
+    header("Location: $returnaddress");
     exit();
 }
 elseif($numOfQueries > 1)
@@ -37,12 +62,19 @@ elseif($numOfQueries > 1)
 }
 
 //If all passed, you can insert the info into the database
-$query = "insert into Users(ID, Username, Password, Description)
-          values(?, ?, ?, ?)";
+if(isset($evemancbx) && $evemancbx) //If it's an event manager
+{
+$query = "insert into Users(ID, Username,
+                Password, Description, EventAdmin)
+          values(0, ?, ?, ?, 1)";
 $insertstmt = $mysqli->prepare($query);
-$a = 0;
-$insertstmt->bind_param('isss', $a, $_POST['usrname'], $_POST['usrpwd'],
-                        $_POST['biodesc']);
+if($insertstmt == false)
+{
+    echo "An error happened for the prepared statement within first if clause";
+    echo $mysqli->error;
+    exit();
+}
+$insertstmt->bind_param('sss', $usrname, $usrpwd, $biodesc);
 if($insertstmt == false)
 {
     echo "Oppppps, error happened while inserting";
@@ -50,8 +82,23 @@ if($insertstmt == false)
 }
 $insertstmt->execute();
 $insertstmt->close();
+}
+else //If it's just the user
+{
+    $query = "insert into Users(ID, Username,
+                    Password, EventAdmin)
+              values(0, ?, ?, 0)";
+    $stmt = $mysqli->prepare($query);
+    if($stmt == false)
+    {
+        echo "An error happened for the prepared statement within else clause";
+        echo $mysqli->error;
+        exit();
+    }
+    $stmt->bind_param('ss', $usrname, $usrpwd);
+    $stmt->execute();
+    $stmt->close();
+}
 header("Location: {$_SERVER['HTTP_REFERER']}");
 header("Location: ../../../index.php");
-
-
  ?>
