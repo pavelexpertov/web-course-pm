@@ -88,4 +88,13 @@ function checkUsername($usrname)
         return false;
     }
 }
+
+function checkCheckbox($cbx)
+{
+    //Purpose if the checkbox contains two letters
+    if(count($cbx) == 1 && $cbx == "on")
+        return true;
+    else
+        return false;
+}
  ?>

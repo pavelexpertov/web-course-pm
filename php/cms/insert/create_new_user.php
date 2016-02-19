@@ -13,6 +13,41 @@ if(isset($_SESSION['err']))
     unset($_SESSION['err']);
 }
 
+/*if(isset($_POST['bio_cbx']))
+{
+    if(checkCheckbox($_POST['bio_cbx']))
+        echo "true";
+    else
+        echo "false";
+}
+else
+    echo "Ehhh, it's not set";
+    */
+
+//exit();
+
+$usrname = checkUsername($_POST['usrname']);
+$usrpwd = checkPassword($_POST['usrpwd']);
+$reppwd = arePasswordsEqual($usrpwd, $_POST['reppwd']);
+if(isset($_POST['bio_cbx']) && isset($_POST['biodesc']))
+{
+    $evemancbx = checkCheckbox($_POST['bio_cbx']);
+    if($_POST['biodesc'] != "")
+        $biodesc = checkString($_POST['biodesc']);
+    else
+        $biodesc = "No description";
+}
+
+$listOfVars = array();
+$listOfVars[] = $usrname;
+$listOfVars[] = $usrpwd;
+$listOfVars[] = $reppwd;
+if(isset($_POST['bio_cbx']) && isset($_POST['biodesc']))
+{
+    $listOfVars[] = $evemancbx;
+    $listOfVars[] = $biodesc;
+}
+include '../../cms/verifydata/check_for_false_vars.inc.php';
 exit();
 
 //First stage is to collect some needed info to check against (i.e. existing username)
