@@ -7,7 +7,7 @@ foreach($listOfIncludes as $include)
 
 $oldpwd = checkPassword($_POST['oldpwd']);
 $newpwd = checkPassword($_POST['newpwd']);
-$reppwd = arePasswordsEqual($_reppwd, $_newpwd);
+$reppwd = arePasswordsEqual($_POST['reppwd'], $newpwd);
 $listOfVars = array($oldpwd, $newpwd, $reppwd);
 include '../../cms/verifydata/check_for_false_vars.inc.php';
 
