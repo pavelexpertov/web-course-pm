@@ -21,9 +21,14 @@
         exit();
     }
 
+    $usrname = checkUsername($_POST['usr']);
+    $usrpwd = checkPassword($_POST['pwd']);
+    $listOfVars = array($usrname, $usrpwd);
+    include 'php/cms/verifydata/check_for_false_vars.inc.php';
+
     $query = "select ID, Username, Password from Users where Username = ?";
     $querystmt = $mysqli->prepare($query);
-    $querystmt->bind_param('s', $_POST['usr']);
+    $querystmt->bind_param('s', $usrname);
     if($querystmt == false){
         $_SESSION['err'] = "Some problem with prepared statement " . $querystmt->error_list;
         header("Location: {$_SERVER['HTTP_REFERER']}");
@@ -42,10 +47,10 @@
         exit();
     }
 
-    $querystmt->bind_result($usrid, $usrname, $usrpwd);
+    $querystmt->bind_result($usrid, $usrname2, $usrpwd2);
     $querystmt->fetch();
     $querystmt->close();
-    if($_POST['pwd'] != $usrpwd)
+    if($usrpwd2 != $usrpwd)
     {
         $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
         header("Location: {$_SERVER['HTTP_REFERER']}");
@@ -56,8 +61,8 @@
     else {
         $userobj = new User;
         $userobj->id = $usrid;
-        $userobj->usrname = $usrname;
-        $userobj->usrpwd = $usrpwd;
+        $userobj->usrname = $usrname2;
+        $userobj->usrpwd = $usrpwd2;
         $_SESSION['usr'] = $userobj;
         header("Location: ../../../index.php");
         exit();
