@@ -2,6 +2,11 @@
     <form id="create-usr-account" action="php/cms/insert/create_new_user.php" method="post">
         <label for="usrname">Enter your username</label>
         <input type="text" name="usrname" id="usrname">
+        <?php if(isset($_SESSION['erR'])) { ?>
+            <p>
+                <?php echo $_SESSION['erR']; ?>
+            </p>
+        <?php } //End of the if statement ?>
         <br>
         <label for="usrpwd">Enter your password</label>
         <input type="text" name="usrpwd" id="usrpwd">
@@ -21,14 +26,4 @@
         <input type="submit" value="Create user account">
 
     </form>
-
-    <div class="error-section">
-        <?php if(isset($_SESSION['err'])) { ?>
-            <p>
-                <?php echo $_SESSION['err']; ?>
-            </p>
-        <?php } //End of the if statement ?>
-    </div>
-
-
 </section>
