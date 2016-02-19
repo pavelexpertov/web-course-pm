@@ -2,9 +2,9 @@
     <form id="create-usr-account" action="php/cms/insert/create_new_user.php" method="post">
         <label for="usrname">Enter your username</label>
         <input type="text" name="usrname" id="usrname">
-        <?php if(isset($_SESSION['erR'])) { ?>
+        <?php if(isset($_GET['ue'])) { ?>
             <p>
-                <?php echo $_SESSION['erR']; ?>
+                <?php echo $_GET['ue']; ?>
             </p>
         <?php } //End of the if statement ?>
         <br>
