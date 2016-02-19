@@ -13,6 +13,9 @@ if(isset($_SESSION['err']))
     unset($_SESSION['err']);
 }
 
+$fname = checkString($_POST['fname'], 25);
+$lname = checkString($_POST['lname'], 25);
+$job = checkString($_POST['job'], 25);
 $usrname = checkUsername($_POST['usrname']);
 $usrpwd = checkPassword($_POST['usrpwd']);
 $reppwd = arePasswordsEqual($usrpwd, $_POST['reppwd']);
@@ -65,8 +68,8 @@ elseif($numOfQueries > 1)
 if(isset($evemancbx) && $evemancbx) //If it's an event manager
 {
 $query = "insert into Users(ID, Username,
-                Password, Description, EventAdmin)
-          values(0, ?, ?, ?, 1)";
+                Password, Description, EventAdmin, CurrentJob, FirstName, LastName)
+          values(0, ?, ?, ?, 1, ?, ?, ?)";
 $insertstmt = $mysqli->prepare($query);
 if($insertstmt == false)
 {
