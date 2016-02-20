@@ -12,6 +12,7 @@ include 'php/web_comp/button_element.func.php';
       <input type="text" id="evename" name="evename">
       <br>
       <label>Event description</label>
+      <br>
       <textarea id="descr" name="descr"></textarea>
       <br>
       <label>Date</label>
