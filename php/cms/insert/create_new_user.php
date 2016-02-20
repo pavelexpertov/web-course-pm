@@ -8,9 +8,13 @@ foreach($listOfIncludes as $include)
 
 
 //Clear the error message just in case
-if(isset($_SESSION['err']))
+if(isset($_SESSION['usr-err']))
 {
-    unset($_SESSION['err']);
+    unset($_SESSION['usr-err']);
+}
+if(isset($_SESSION['em-err']))
+{
+    unset($_SESSION['em-err']);
 }
 
 $fname = checkString($_POST['fname'], 25);
@@ -66,19 +70,19 @@ elseif($numOfQueries > 1)
 
 //Second stage is to check if the email already exists
 $query = "select Email from Users where Email = ?";
-$usrnamestmt = $mysqli->prepare($query);
-$usrnamestmt->bind_param('s', $email);
-$usrnamestmt->execute();
-$usrnamestmt->store_result();
-$numOfQueries = $usrnamestmt->num_rows;
+$emailstmt = $mysqli->prepare($query);
+$emailstmt->bind_param('s', $email);
+$emailstmt->execute();
+$emailstmt->store_result();
+$numOfQueries = $emailstmt->num_rows;
 //Second stage is to compare the email against the post's
 if($numOfQueries == 1)
 {
-    $usrnamestmt->bind_result($emailExists);
-    $usrnamestmt->close();
+    $emailstmt->bind_result($emailExists);
+    $emailstmt->close();
     if($emailExists == $email)
-        $_SESSION['ee'] = "The email already exists";
-    $returnaddress = $_SERVER['HTTP_REFERER'] . "?ee=The email already exists";
+        $_SESSION['em-err'] = "The email already exists";
+    $returnaddress = $_SERVER['HTTP_REFERER'];
     header("Location: $returnaddress");
     exit();
 }

@@ -5,7 +5,15 @@
             echo "<br> value of err is : {$_SESSION['usr-err']}";
             }
         else
-            echo '$_SESSION[\'usr-err\'] doesn\'t exists.';
+            echo 'usr-err exists';
+echo "<br>";
+         if(isset($_SESSION['em-err']))
+            {
+            echo '$_SESSION[\'em-err\'] exists';
+            echo "<br> value of err is : {$_SESSION['em-err']}";
+            }
+        else
+            echo '$_SESSION[\'em-err\'] doesn\'t exists.';
             ?>
     <form id="create-usr-account" action="php/cms/insert/create_new_user.php" method="post">
         <label for="fname">First Name</label>
@@ -16,6 +24,9 @@
         <br>
         <label for="email">Email</label>
         <input type="text" name="email" id="email">
+        <?php if(isset($_SESSION['em-err'])) { ?>
+                <?php echo $_SESSION['em-err']; ?>
+        <?php } //End of the if statement ?>
         <br>
         <label for="usrname">Enter your username</label>
         <input type="text" name="usrname" id="usrname">
@@ -45,3 +56,13 @@
 
     </form>
 </section>
+<?php
+if(isset($_SESSION['usr-err']))
+{
+    unset($_SESSION['usr-err']);
+}
+if(isset($_SESSION['em-err']))
+{
+    unset($_SESSION['em-err']);
+}
+ ?>
