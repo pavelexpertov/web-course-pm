@@ -54,13 +54,23 @@ $numOfQueries = $usrnamestmt->num_rows;
 //Second stage is to compare the usrname against the post's
 if($numOfQueries == 1)
 {
+    $lop = array(
+        "fn" => $fname,
+        "ln" => $lname,
+        "email" => $email,
+        "uname" => $usrname,
+        "upwd" => $usrpwd,
+        "reppwd" => $usrpwd,
+        "job"=> $job);
+    if(isset($evemancbx))
+    {
+        $lop["biodesc"] = $biodesc;
+    }
+    $_SESSION['pv'] = $lop;
+
     $usrnamestmt->bind_result($nam, $ema);
     $usrnamestmt->fetch();
     $usrnamestmt->close();
-
-    echo $usrname . " " . $nam . "<br>";
-    echo $email . " " . $ema . "<br>";
-
     if($nam == $usrname)
         $_SESSION['usr-err'] = "The username already exists";
     if($ema == $email)
