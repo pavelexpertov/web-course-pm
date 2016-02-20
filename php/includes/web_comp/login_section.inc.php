@@ -26,8 +26,8 @@
         if(isset($_SESSION['auth']))
         {
             ?>
-        <label for='pwd'>Enter your code that's been sent to your email</label>
-        <input type='password' name='pwd' id='pwd'>
+        <label for='code'>Enter your code that's been sent to your email</label>
+        <input type='text' name='code' id='code'>
         <?php
         }//End of the if
         ?>
