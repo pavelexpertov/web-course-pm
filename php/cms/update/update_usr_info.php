@@ -14,9 +14,9 @@ if(isset($_POST['bio_cbx']))
 if(isset($_POST['biodesc']))
 {
     if($_POST['biodesc'] == "")
-        $biodesc == "null";
+        $biodesc = "null";
     else
-        $biodesc == checkString($_POST['biodesc']);
+        $biodesc = checkString($_POST['biodesc']);
 }
 $listOfVars = array($pwd, $fname, $lname, $job);
 if(isset($bio_cbx))
@@ -56,7 +56,7 @@ if(isset($bio_cbx))
     else
     $eveadmin = 0;
 
-$stmt->bind_param("sssisi", $fname, $lname, $job, 
+$stmt->bind_param("sssisi", $fname, $lname, $job,
                         $eveadmin, $biodesc, $_SESSION['usr']->id);
 $stmt->execute();
 $stmt->close();
