@@ -34,7 +34,7 @@
   $stmt->close();
 
  ?>
-<form action="php/cms/update/update_venue.php" method="post">
+<form id="venue-form" action="php/cms/update/update_venue.php" method="post">
     <fieldset>
       <legend>Edit Venue</legend>
       <label>Venue name</label>
@@ -53,7 +53,7 @@
       <label>Capacity</label>
       <input type="text" id="cap" name="cap" value="<?php echo $cap;?>">
       <br>
-      <input type="submit" value="Create a new event">
+      <input type="submit" value="Save Changes">
       <br>
       <?php placeButton("Cancel", "usr_page.php");?>
       <input type="hidden" name="vid" value="<?php echo $vid;?>">
