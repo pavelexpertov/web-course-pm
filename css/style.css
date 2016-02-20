@@ -99,7 +99,7 @@ Miscelanious stuff
 {
   width: 1000px;
   margin: auto;
-  border-style: dashed; /*Border should be removed after testing!!!*/
+  border-style: solid; /*Border should be removed after testing!!!*/
   padding: 23px; /*This is used for testing purposes*/
 }
 
@@ -116,7 +116,8 @@ header
 .middle-section
 {
   border:5px;
-  border-style: dotted;
+  border-style: solid;
+  background-color: F0E54D;
   overflow:auto; 
    /*Fixes the 'overflow' problem 
    when contained elements are 
@@ -193,7 +194,7 @@ aside /*For forthcoming events section*/
 {
 /*    border:2px; */
 /*    border-style: solid; */
-   background-color: rebeccapurple;
+   background-color: 4DF093;
 /*    width:224px; */
    width: 20%;
    float:left;
@@ -203,7 +204,7 @@ section /*Stuff that's on the right side of forthcoming events*/
 {
 /*    border:2px; */
 /*    border-style: solid; */
-   background-color: yellowgreen;
+   /*background-color: yellowgreen;*/
    float:left;
    width: 80%;
    
@@ -213,6 +214,18 @@ section /*Stuff that's on the right side of forthcoming events*/
    END OF Stuff for 'internal' containers 
    within middle section.
 ////////////////////////////*/
+/*////////////////////////////
+   Introduction's intro text
+////////////////////////////*/
+#introduction .descr
+{
+  width: 435px;
+  border: 3px solid black;
+}
+/*////////////////////////////
+   END OF Introductino's intro text
+////////////////////////////*/
+
 
 /*///////////////////////////
    Forthcoming events section's rules
@@ -221,6 +234,23 @@ section /*Stuff that's on the right side of forthcoming events*/
 aside h3 /*header for the whole section*/
 {
    padding-left: 23px;
+}
+
+aside ul
+{
+   list-style-type: none;
+   margin: 24px;
+   padding: 0;
+}
+
+aside li
+{
+   border-top: 1px black solid;
+}
+
+aside li:first-child
+{
+   border-top: none;
 }
 /*///////////////////////////
    END OF Forthcoming events section's rules
