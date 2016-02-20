@@ -18,13 +18,13 @@
         <?php } //End of the if statement ?>
         <br>
         <label for="usrpwd">Enter your password</label>
-        <input type="text" name="usrpwd" id="usrpwd">
+        <input type="password" name="usrpwd" id="usrpwd">
         <br>
         <label for="reppwd">Repeat your password</label>
-        <input type="text" name="reppwd" id="reppwd">
+        <input type="password" name="reppwd" id="reppwd">
         <br>
         <label for="job">Your current job/educational title</label>
-        <input type="text" name="job" id="job">
+        <input type="type" name="job" id="job">
         <br>
         <br>
         <input type="checkbox" name="bio_cbx" id="bio_cbx">
