@@ -2,6 +2,8 @@
 <h2>List of Bookings</h2>
     <?php
         //The purpose of the section is to list user's booked events.
+        include_once 'php/web_comp/button_element.func.php';
+        include_once 'php/data_format/convert_date.func.php';
 
         //Creating a query
         $query = "select evename, evedate, usrid, beid, bedate, eventid

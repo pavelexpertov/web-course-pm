@@ -6,20 +6,20 @@
     require_once 'php/conn_sess/dbconn.inc.php';
 
     //Creating a query
-    $query = "select id, fname, lname from speakers_list";
+    $query = "select ID, FirstName, LastName from Users where EventAdmin = 1";
     $resultSpeakersList = $mysqli->query($query);
 
     //Outputing data
 
     while($speaker = $resultSpeakersList->fetch_assoc())
     {
-        $link = "'speaker_info.php?id=" . "{$speaker['id']}'";
+        $link = "'speaker_info.php?id=" . "{$speaker['ID']}'";
  ?>
         <div class="speaker-box">
             <h3>
             <a href= <?php echo $link; ?>>
             <?php
-            echo $speaker['fname'] . " " . $speaker['lname'];
+            echo $speaker['FirstName'] . " " . $speaker['LastName'];
             ?>
             </a>
             </h3>
