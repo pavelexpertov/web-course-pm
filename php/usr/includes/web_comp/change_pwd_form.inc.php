@@ -7,13 +7,13 @@ include 'php/web_comp/button_element.func.php';
 <fieldset>
     <legend>Change your password</legend>
     <label>Your current password</label>
-    <input type="text" id="oldpwd" name="oldpwd">
+    <input type="password" id="oldpwd" name="oldpwd">
     <br>
     <label>New password</label>
-    <input type="text" id="newpwd" name="newpwd">
+    <input type="password" id="newpwd" name="newpwd">
     <br>
     <label>Re-enter password</label>
-    <input type="text" id="reppwd" name="reppwd">
+    <input type="password" id="reppwd" name="reppwd">
     <br>
     <input type="submit" value="Change your password">
     <?php placeButton("Cancel", "usr_page.php");?>

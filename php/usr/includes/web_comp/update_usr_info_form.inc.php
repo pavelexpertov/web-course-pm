@@ -39,7 +39,7 @@
     <br>
     <label for="pwd">Enter your password to confirm changes</label>
     <br>
-    <input type="text" name="pwd" id="pwd">
+    <input type="password" name="pwd" id="pwd">
     <br>
     <input type="submit" value="Save Changes">
     <?php placeButton("Cancel", "usr_page.php");?>
