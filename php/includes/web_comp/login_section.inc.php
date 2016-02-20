@@ -17,10 +17,10 @@
     }
      ?>
         <label for='usr'>Username</label>
-        <input type='text' name='usr' id='usr'>
+        <input type='text' name='usr' id='usr' value="<?php if(isset($_SESSION['auth'])) echo $_SESSION['auth']['usr'];?>">
 	<br>
         <label for='pwd'>Password</label>
-        <input type='password' name='pwd' id='pwd'>
+        <input type='password' name='pwd' id='pwd' value="<?php if(isset($_SESSION['auth'])) echo $_SESSION['auth']['pwd'];?>">
 	<br>
         <?php
         if(isset($_SESSION['auth']))
