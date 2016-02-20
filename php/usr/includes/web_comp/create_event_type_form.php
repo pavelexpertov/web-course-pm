@@ -1,5 +1,5 @@
 <?php include 'php/web_comp/button_element.func.php';?>
-<form action="php/cms/insert/create_event_type_category.php" method="post">
+<form id="eve-type" action="php/cms/insert/create_event_type_category.php" method="post">
     <fieldset>
       <legend>Create a new Event Type</legend>
       <label>Event Type name</label>

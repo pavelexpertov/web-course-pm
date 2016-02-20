@@ -11,5 +11,5 @@
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/usr/includes/sections/create_event_type_section.inc.php';
-    placeBodyElement($includeList);
+    placeBodyElement($includeList, "js/create_event_type.js");
 ?>
