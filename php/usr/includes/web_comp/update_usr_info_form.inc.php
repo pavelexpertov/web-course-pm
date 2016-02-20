@@ -43,5 +43,6 @@
     <br>
     <input type="submit" value="Save Changes">
     <?php placeButton("Cancel", "usr_page.php");?>
+    <br>
     <fieldset>
 </form>

@@ -19,4 +19,25 @@ $("#change-pwd").validate({
             equalTo: "#newpwd"
         }
     }
-})
+});
+
+$("#update-info").validate({
+    rules:{
+        fname: {
+            required: true,
+            maxlength: 25
+        },
+        lname: {
+            required: true,
+            maxlength: 25
+        },
+        job: {
+            required: true,
+            maxlength: 25
+        },
+        pwd: {
+            required: true,
+            pwdRegex: true
+        }
+    }
+});
