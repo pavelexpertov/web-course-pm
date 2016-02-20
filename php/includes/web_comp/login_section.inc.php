@@ -33,6 +33,7 @@
             {
                 echo "<br>";
                 echo $_SESSION['auth-err'];
+                unset($_SESSION['auth-err']);
             }
         }//End of the if
         ?>
@@ -53,8 +54,8 @@
             {
                 echo "{$_SESSION['err']}";
             }
-/*if(isset($_SESSION['auth']))
-    unset($_SESSION['auth']);*/
+if(isset($_SESSION['auth']))
+    unset($_SESSION['auth']);
          ?>
     </div>
 
