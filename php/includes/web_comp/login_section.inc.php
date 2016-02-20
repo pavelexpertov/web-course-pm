@@ -29,6 +29,11 @@
         <label for='code'>Enter your code that's been sent to your email</label>
         <input type='text' name='code' id='code'>
         <?php
+            if(isset($_SESSION['auth-err']))
+            {
+                echo "<br>";
+                echo $_SESSION['auth-err'];
+            }
         }//End of the if
         ?>
 	<br>
@@ -48,8 +53,8 @@
             {
                 echo "{$_SESSION['err']}";
             }
-if(isset($_SESSION['auth']))
-    unset($_SESSION['auth']);
+/*if(isset($_SESSION['auth']))
+    unset($_SESSION['auth']);*/
          ?>
     </div>
 
