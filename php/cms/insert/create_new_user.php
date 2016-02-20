@@ -52,9 +52,8 @@ if($numOfQueries == 1)
 {
     $usrnamestmt->bind_result($existusrname);
     $usrnamestmt->close();
-    if($existusrname == $_POST['usrname'])
-        $_SESSION['ue'] = "The username already exists";
-    $returnaddress = $_SERVER['HTTP_REFERER'] . "?ue=The username already exists";
+    $_SESSION['usr-err'] = "The username already exists";
+    $returnaddress = $_SERVER['HTTP_REFERER'];
     header("Location: $returnaddress");
     exit();
 }
