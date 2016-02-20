@@ -45,42 +45,25 @@ if(isset($_POST['bio_cbx']) && isset($_POST['biodesc']))
 include '../../cms/verifydata/check_for_false_vars.inc.php';
 
 //First stage is to collect some needed info to check against (i.e. existing username)
-$query = "select Username from Users where Username = ?";
+$query = "select Username, Email from Users where Username = ? or Email = ?";
 $usrnamestmt = $mysqli->prepare($query);
-$usrnamestmt->bind_param('s', $usrname);
+$usrnamestmt->bind_param('ss', $usrname, $email);
 $usrnamestmt->execute();
 $usrnamestmt->store_result();
 $numOfQueries = $usrnamestmt->num_rows;
 //Second stage is to compare the usrname against the post's
 if($numOfQueries == 1)
 {
-    $usrnamestmt->bind_result($existusrname);
+    $usrnamestmt->bind_result($nam, $ema);
+    $usrnamestmt->fetch();
     $usrnamestmt->close();
-    $_SESSION['usr-err'] = "The username already exists";
-    $returnaddress = $_SERVER['HTTP_REFERER'];
-    header("Location: $returnaddress");
-    exit();
-}
-elseif($numOfQueries > 1)
-{
-    $_SESSION['err'] = "For some reason you got more than one query you asked for, for username or email";
-    header("Location: {$_SERVER['HTTP_REFERER']}");
-    exit();
-}
 
-//Second stage is to check if the email already exists
-$query = "select Email from Users where Email = ?";
-$emailstmt = $mysqli->prepare($query);
-$emailstmt->bind_param('s', $email);
-$emailstmt->execute();
-$emailstmt->store_result();
-$numOfQueries = $emailstmt->num_rows;
-//Second stage is to compare the email against the post's
-if($numOfQueries == 1)
-{
-    $emailstmt->bind_result($emailExists);
-    $emailstmt->close();
-    if($emailExists == $email)
+    echo $usrname . " " . $nam . "<br>";
+    echo $email . " " . $ema . "<br>";
+
+    if($nam == $usrname)
+        $_SESSION['usr-err'] = "The username already exists";
+    if($ema == $email)
         $_SESSION['em-err'] = "The email already exists";
     $returnaddress = $_SERVER['HTTP_REFERER'];
     header("Location: $returnaddress");
