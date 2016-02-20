@@ -1,5 +1,5 @@
 <?php include 'php/web_comp/button_element.func.php';?>
-<form action="php/cms/insert/create_venue_category.php" method="post">
+<form id="venue-form" action="php/cms/insert/create_venue_category.php" method="post">
     <fieldset>
       <legend>Create a new Venue</legend>
       <label>Venue name</label>
