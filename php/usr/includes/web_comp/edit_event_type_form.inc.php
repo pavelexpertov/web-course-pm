@@ -34,7 +34,7 @@
   $stmt->close();
 
  ?>
-<form action="php/cms/update/update_event_type.php" method="post">
+<form id="eve-type" action="php/cms/update/update_event_type.php" method="post">
     <fieldset>
       <legend>Edit a new Event Type</legend>
       <label>Event Type name</label>

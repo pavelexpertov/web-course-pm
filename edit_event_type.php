@@ -7,9 +7,9 @@
     //Adding head element
     include 'php/web_comp/head_element.func.php';
     include 'php/web_comp/body_element.func.php';
-    placeHeadElement("User Account Page");
+    placeHeadElement("Edit Event Type");
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/usr/includes/sections/edit_event_type_section.inc.php';
-    placeBodyElement($includeList);
+    placeBodyElement($includeList, "js/create_event_type.js");
 ?>
