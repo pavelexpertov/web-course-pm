@@ -52,10 +52,10 @@ $usrnamestmt->execute();
 $usrnamestmt->store_result();
 $numOfQueries = $usrnamestmt->num_rows;
 //Second stage is to compare the usrname against the post's
-if($numOfQueries >= 0)
+if($numOfQueries > 0)
 {
     $lop = array(
-        "fn" => $fname,
+        "fn" => $fnamet,
         "ln" => $lname,
         "email" => $email,
         "uname" => $usrname,
