@@ -52,7 +52,7 @@ $usrnamestmt->execute();
 $usrnamestmt->store_result();
 $numOfQueries = $usrnamestmt->num_rows;
 //Second stage is to compare the usrname against the post's
-if($numOfQueries == 1)
+if($numOfQueries >= 0)
 {
     $lop = array(
         "fn" => $fname,
@@ -79,12 +79,12 @@ if($numOfQueries == 1)
     header("Location: $returnaddress");
     exit();
 }
-elseif($numOfQueries > 1)
+/*elseif($numOfQueries > 1)
 {
     $_SESSION['err'] = "For some reason you got more than one query you asked for, for username or email";
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
-}
+}*/
 
 
 //If all passed, you can insert the info into the database
@@ -128,6 +128,26 @@ else //If it's just the user
     $stmt->execute();
     $stmt->close();
 }
+
+//AUTHENTICATION LOGIC
+/*$code = "";
+for($i = 0; $i < 6; $i++)
+{
+    $num = mt_rand(0, 9);
+    $code = $code . $num;
+}
+
+$query = "insert into AuthCodes Values(0, ?, ?)";
+$q = $mysqli->prepare($query);
+if($q == false)
+{
+    echo "an error happened";
+    echo $q->error;
+    exit();
+}
+$q->bind_param("si", $usrname, $code);
+$q->execute();
+$q->close();*/
 header("Location: {$_SERVER['HTTP_REFERER']}");
 header("Location: ../../../index.php");
  ?>
