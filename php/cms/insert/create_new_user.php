@@ -149,6 +149,8 @@ if($q == false)
 $q->bind_param("si", $usrname, $code);
 $q->execute();
 $q->close();
+/*email($email, "Code for authorisation", "Your code for autherisation is $code\nUse your
+        username and password to login on login page and then you will get prompted to enter the provided code");*/
 header("Location: {$_SERVER['HTTP_REFERER']}");
 header("Location: ../../../index.php");
  ?>
