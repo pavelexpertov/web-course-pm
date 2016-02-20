@@ -39,14 +39,17 @@
         //Create today's date for the booking in the correct format
         $cdate = date("Y-m-d");
         //Make a new query to toggle the flag off
-        $query = "update BookedEvents set archived = 0, bookingdate = $cdate where ID = $bookedid";
-        $stmt = $mysqli->query($query);
+        $query = "update BookedEvents set archived = 0, bookingdate = ? where ID = ?";
+        $stmt = $mysqli->prepare($query);
         //echo $stmt;
         if($stmt == false)
         {
             echo "Ooops an error has happened inside an if clause of updating the booking archived and bookeddate ";
             echo $mysqli->error;
         }
+        $stmt->bind_param("si", $cdate, $bookedid);
+        $stmt->execute();
+        $stmt->close();
         //echo $mysqli->error;
         //$stmt->close();
     }
@@ -54,14 +57,16 @@
         $stmt->close();
         //Create today's date for the booking in the correct format
         $cdate = date("Y-m-d");
-        $query = "insert into BookedEvents values(0, $eveid,
-                 {$_SESSION['usr']->id}, $cdate, 0)";
-        $stmt=$mysqli->query($query);
+        $query = "insert into BookedEvents values(0, $eveid, {$_SESSION['usr']->id}, $cdate, 0)";
+        $stmt=$mysqli->prepare($query);
         if($stmt == false)
         {
             echo "Ooops an error has happened inside an else clause of inserting the booking";
             echo $mysqli->error;
         }
+        $stmt->bind_param("iis", $eveid, $_SESSION['usr']->id, $cdate);
+        $stmt->execute();
+        $stmt->close();
         //echo $mysqli->error;
 
         //$stmt->close();
