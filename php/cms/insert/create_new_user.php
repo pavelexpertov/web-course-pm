@@ -52,7 +52,7 @@ $usrnamestmt->execute();
 $usrnamestmt->store_result();
 $numOfQueries = $usrnamestmt->num_rows;
 //Second stage is to compare the usrname against the post's
-if($numOfQueries >= 0)
+if($numOfQueries > 0)
 {
     $lop = array(
         "fn" => $fname,
@@ -130,7 +130,7 @@ else //If it's just the user
 }
 
 //AUTHENTICATION LOGIC
-/*$code = "";
+$code = "";
 for($i = 0; $i < 6; $i++)
 {
     $num = mt_rand(0, 9);
@@ -147,7 +147,7 @@ if($q == false)
 }
 $q->bind_param("si", $usrname, $code);
 $q->execute();
-$q->close();*/
+$q->close();
 header("Location: {$_SERVER['HTTP_REFERER']}");
 header("Location: ../../../index.php");
  ?>
