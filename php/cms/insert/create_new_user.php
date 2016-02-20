@@ -17,6 +17,7 @@ if(isset($_SESSION['em-err']))
     unset($_SESSION['em-err']);
 }
 
+
 $fname = checkString($_POST['fname'], 25);
 $lname = checkString($_POST['lname'], 25);
 $job = checkString($_POST['job'], 25);

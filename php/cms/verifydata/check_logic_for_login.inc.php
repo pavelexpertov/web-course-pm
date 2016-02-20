@@ -26,7 +26,7 @@
     $listOfVars = array($usrname, $usrpwd);
     include 'php/cms/verifydata/check_for_false_vars.inc.php';
 
-    $query = "select ID, Username, Password, EventAdmin from Users where Username = ?";
+    $query = "select ID, Username, Password, EventAdmin, Authenticated from Users where Username = ?";
     $querystmt = $mysqli->prepare($query);
     $querystmt->bind_param('s', $usrname);
     if($querystmt == false){
@@ -47,7 +47,7 @@
         exit();
     }
 
-    $querystmt->bind_result($usrid, $usrname2, $usrpwd2, $eveadm);
+    $querystmt->bind_result($usrid, $usrname2, $usrpwd2, $eveadm, $auth);
     $querystmt->fetch();
     $querystmt->close();
     if($usrpwd2 != $usrpwd)
@@ -58,6 +58,13 @@
         echo "usrpwd from query is: $usrpwd <br>";
         exit();
     }
+    elseif($auth == 0)
+    {
+        $l = array( "usr" => $usrname, "pwd" => $usrpwd);
+        $_SESSION['auth'] = $l;
+        header("Location: {$_SERVER['HTTP_REFERER']}");
+        exit();
+    }//End of the else clause
     else {
         $userobj = new User;
         $userobj->id = $usrid;
