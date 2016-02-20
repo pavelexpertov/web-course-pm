@@ -12,6 +12,6 @@
     //Adding section designated for login.php
     $includeList[] = 'php/includes/sections/loginpage_section.inc.php';
 
-    placeBodyElement($includeList);
+    placeBodyElement($includeList, "js/login_form.js");
 
  ?>

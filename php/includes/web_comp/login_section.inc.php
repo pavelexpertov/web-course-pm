@@ -3,7 +3,7 @@
     <?php
         $action = "php/cms/verifydata/check_logic_for_login.inc.php";
      ?>
-    <form action='<?php echo $action; ?>' method='post'>
+    <form id="login-form" action='<?php echo $action; ?>' method='post'>
         <label for='usr'>Username</label>
         <input type='text' name='usr' id='usr'>
 	<br>

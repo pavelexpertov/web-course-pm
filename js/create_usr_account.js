@@ -3,7 +3,7 @@ $.validator.addMethod("usrnameRegex", function(value, element) {
 }, "Username must contain only letters, numbers, or dashes.");
 $.validator.addMethod("pwdRegex", function(value, element) {
        return this.optional(element) || /^[a-zA-Z]\w{3,14}$/i.test(value);
-}, "Username must contain only letters, numbers, or dashes.");
+}, "Password must contain only letters, numbers, or dashes.");
 //Adding validation rules
 $("#create-usr-account").validate({
     rules: {
