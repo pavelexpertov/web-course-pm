@@ -6,8 +6,16 @@
         include_once 'php/data_format/convert_date.func.php';
 
         //Creating a query
+        if($_SESSION['usr']->eveadmin != 2)
+        {
         $query = "select evename, evedate, usrid, beid, bedate, eventid
                   from bookedevent_view where usrid = {$_SESSION['usr']->id}";
+      }
+      else
+      {
+        $query = "select evename, evedate, usrid, beid, bedate, eventid
+                  from bookedevent_view";
+          }
         $stmt = $mysqli->query($query);
         $sumofqueries = mysqli_num_rows($stmt);
         if($sumofqueries > 0)
