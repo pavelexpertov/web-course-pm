@@ -32,6 +32,7 @@ $stmt->bind_param("s", $usrname);
 $stmt->execute();
 $stmt->store_result();
 $querynum = $stmt->num_rows;
+echo $querynum;
 if($querynum == 0)
 {
     $_SESSION['auth'] = $l;

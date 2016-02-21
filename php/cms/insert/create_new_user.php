@@ -132,7 +132,9 @@ else //If it's just the user
 
 //AUTHENTICATION LOGIC
 $code = "";
-for($i = 0; $i < 6; $i++)
+$num = mt_rand(2, 9);
+$code = $code . $num;
+for($i = 0; $i < 5; $i++)
 {
     $num = mt_rand(0, 9);
     $code = $code . $num;
