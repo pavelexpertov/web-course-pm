@@ -16,6 +16,10 @@
         <?php
     }
      ?>
+        <?php
+            if(isset($_SESSION['auth']))
+            {
+        ?>
         <label for='usr'>Username</label>
         <input type='text' name='usr' id='usr' value="<?php if(isset($_SESSION['auth'])) echo $_SESSION['auth']['usr'];?>">
 	<br>
@@ -23,6 +27,19 @@
         <input type='password' name='pwd' id='pwd' value="<?php if(isset($_SESSION['auth'])) echo $_SESSION['auth']['pwd'];?>">
 	<br>
         <?php
+            }//End of the first if
+            else
+            {
+                 ?>
+        <label for='usr'>Username</label>
+        <input type='text' name='usr' id='usr' value="<?php if(isset($_SESSION['err'])) echo $_SESSION['err']['usr'];?>">
+	<br>
+        <label for='pwd'>Password</label>
+        <input type='password' name='pwd' id='pwd' value="<?php if(isset($_SESSION['err'])) echo $_SESSION['err']['pwd'];?>">
+                <?php
+            }
+
+
         if(isset($_SESSION['auth']))
         {
             ?>
@@ -52,7 +69,8 @@
         <?php
             if(isset($_SESSION['err']))
             {
-                echo "{$_SESSION['err']}";
+                echo "{$_SESSION['err']['msg']}";
+                unset($_SESSION['err']);
             }
 if(isset($_SESSION['auth']))
     unset($_SESSION['auth']);

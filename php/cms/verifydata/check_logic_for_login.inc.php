@@ -42,7 +42,13 @@
 
     if($usr_exist == 0)
     {
-        $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+        $msg = "Unfortunately incorrect username or password. Try again.";
+        $l = array(
+            'usr' => $usrname,
+            'pwd' => $usrpwd,
+            'msg' => $msg
+        );
+        $_SESSION['err'] = $l;
         header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
     }
@@ -52,10 +58,17 @@
     $querystmt->close();
     if($usrpwd2 != $usrpwd)
     {
-        $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+        //$_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+$msg = "Unfortunately incorrect username or password. Try again.";
+        $l = array(
+            'usr' => $usrname,
+            'pwd' => $usrpwd,
+            'msg' => $msg
+        );
+        $_SESSION['err'] = $l;
         header("Location: {$_SERVER['HTTP_REFERER']}");
-        echo "usrpwd from post value is: {$_POST['pwd']} <br>";
-        echo "usrpwd from query is: $usrpwd <br>";
+        //echo "usrpwd from post value is: {$_POST['pwd']} <br>";
+        //echo "usrpwd from query is: $usrpwd <br>";
         exit();
     }
     elseif($auth == 0)
