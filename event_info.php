@@ -11,6 +11,7 @@
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     //Adding section designated for event_info.php
     $includeList[] = 'php/includes/sections/eventinfo_section.inc.php';
+    $includeList[] = 'php/includes/sections/footer_section.inc.php';
 
     placeBodyElement($includeList, "js/event_info.js");
 ?>
