@@ -52,9 +52,15 @@ if($stmt == false)
 	exit();
 }
 if(isset($bio_cbx))
+{
+    $_SESSION['usr']->eveadmin = true;
     $eveadmin = 1;
-    else
+}
+else
+{
+    $_SESSION['usr']->eveadmin = false;
     $eveadmin = 0;
+}
 
 $stmt->bind_param("sssisi", $fname, $lname, $job,
                         $eveadmin, $biodesc, $_SESSION['usr']->id);
