@@ -8,8 +8,15 @@
     //2. List of Venues
 
     //Printing a Event Types list
+    if($_SESSION['usr']->eveadmin != 2)
+    {
     $query = "select ID, Name, Archived from EventTypes
      where ManagerID = {$_SESSION['usr']->id}";
+ }
+    else
+    {
+    $query = "select ID, Name, Archived from EventTypes";
+ }
     $stmt = $mysqli->query($query);
     $sumofqueries = mysqli_num_rows($stmt);
     if($sumofqueries > 0)
@@ -45,8 +52,15 @@
 <?php
 
     //Printing a Venue Types list
+    if($_SESSION['usr']->eveadmin != 2)
+    {
     $query = "select ID, Name, Town, Address, Archived from Venues
      where ManagerID = {$_SESSION['usr']->id}";
+ }
+    else
+    {
+    $query = "select ID, Name, Town, Address, Archived from Venues";
+ }
     $stmt = $mysqli->query($query);
     $sumofqueries = mysqli_num_rows($stmt);
     if($sumofqueries > 0)
