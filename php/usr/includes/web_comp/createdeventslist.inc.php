@@ -8,10 +8,18 @@
     include 'php/web_comp/button_element.func.php';
     //The purpose of the page is to print events created by the registered user
     //Create a query
+    if($_SESSION['usr']->eveadmin != 2)
+    {
     $query = "select eveid, evename, date, stime,
                 ftime, etypename
                 from search_n_event_view2
                 where managerid = {$_SESSION['usr']->id}";
+    }
+    else {
+    $query = "select eveid, evename, date, stime,
+                ftime, etypename
+                from search_n_event_view2";
+    }
     $stmt = $mysqli->query($query);
     //Getting a number of returned queries
     $numberOfQueries = mysqli_num_rows($stmt);
