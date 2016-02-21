@@ -16,8 +16,8 @@ foreach($listOfVars as $var)
 {
     if($var == false)
     {
-        echo "found a variabled with false: $indexx <br>";
-        print_r($listOfVars);
+        //echo "found a variabled with false: $indexx <br>";
+        //print_r($listOfVars);
         exit();
     }
     $indexx++;
