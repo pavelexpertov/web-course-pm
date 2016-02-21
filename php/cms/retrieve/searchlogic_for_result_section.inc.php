@@ -79,7 +79,7 @@
         if(isset($eveType))
             $listOfCond[] = "ConfType = $eveType";
         if(isset($date))
-            $listOfCond[] = "Date = $date";
+            $listOfCond[] = "Date = '$date'";
 
         $stringofcond = "";
         if(count($listOfCond) > 0)
@@ -88,12 +88,13 @@
             $stringofcond = "and " . $stringofcond;
         }
 
-        //echo $stringofcond;
+        //echo $stringofcond . "<br>";
         //Setting up query
         $query = "select $fields from $view
                   where eveid in (select ID from Events
                    where (Name like ? or Description like ?) $stringofcond)";
         //echo $query . "<br>";
+        //exit();
         $resultEvents = $mysqli->prepare($query);
         if($resultEvents == false)
         {
