@@ -13,8 +13,20 @@
       }
       else
       {
-        $query = "select evename, evedate, usrid, beid, bedate, eventid
-                  from bookedevent_view";
+        //$query = "select evename, evedate, usrid, beid, bedate, eventid from bookedevent_view";
+    $fields = "Users.FirstName as 'fn', Users.LastName as 'ln',
+            Users.ID as 'usrid',
+                Events.Name as 'evename', Events.Date as 'evedate',
+                Events.ID as 'eventid',
+                BookedEvents.ID as 'beid',
+                BookedEvents.bookingdate as 'bedate'";
+    $innerjoin = "inner join BookedEvents
+                    on Users.ID = BookedEvents.userid
+                  inner join Events
+                  on Events.ID = BookedEvents.eventid";
+
+    $query = "select $fields from Users $innerjoin where BookedEvents.archived != 1";
+
           }
         $stmt = $mysqli->query($query);
         $sumofqueries = mysqli_num_rows($stmt);
@@ -34,6 +46,15 @@
                     <ul>
                         <li> Event's date: <?php echo convertIsoDate($event['evedate']); ?> </li>
                         <li> Date of Booking: <?php echo convertIsoDate($event['bedate']); ?> </li>
+                        <?php
+                        if($_SESSION['usr']->eveadmin == 2)
+                        {
+                            echo "<li>";
+                            echo "Customer: {$event['fn']} " . "{$event['ln']}";
+                            echo "</li>";
+                        }
+
+                         ?>
                     </ul>
                     <?php
         $bdlink = "php/cms/delete/delete_booked_event.inc.php?eid={$event['beid']}";
