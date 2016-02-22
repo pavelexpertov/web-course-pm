@@ -39,6 +39,7 @@ $checkstmt->fetch();
 $checkstmt->close();
 if(!arePasswordsEqual($pwd, $returnedpwd))
 {
+    $_SESSION['errr'] = "Your password is incorrect. Try again.";
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
 }
