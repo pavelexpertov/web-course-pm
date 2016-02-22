@@ -18,6 +18,8 @@
 
   //The statement updates existing entries for event's data
   //The event's event's name and start time are updated
+  if($_SESSION['usr']->eveadmin != 2)
+  {
   $query = "update Venues set Name = ?, Address = ?,
             Town = ?, Country = ?, Capacity = ?
             where ManagerID = ? and ID = ?";
@@ -35,6 +37,26 @@
                     $_SESSION['usr']->id, $vid);
   $stmt->execute();
   $stmt->close();
+  }
+  else
+  {
+  $query = "update Venues set Name = ?, Address = ?,
+            Town = ?, Country = ?, Capacity = ?
+            where ID = ?";
+
+  $stmt = $mysqli->prepare($query);
+  if($stmt == false)
+  {
+      echo "Ooop an error has happened at prepare statement line";
+      echo $mysqli->error_list;
+      exit();
+  }
+
+  $stmt->bind_param("ssssii", $vname, $addrss,
+                    $town, $country, $cap, $vid);
+  $stmt->execute();
+  $stmt->close();
+  }
   //Return the user to the userpage
   header("Location: ../../../usr_page.php");
   exit();
