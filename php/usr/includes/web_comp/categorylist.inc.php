@@ -76,7 +76,15 @@ $fields = "EventTypes.ID as 'ID', EventTypes.Name as 'Name',
  }
     else
     {
-    $query = "select ID, Name, Town, Address, Archived from Venues";
+    //$query = "select ID, Name, Town, Address, Archived from Venues";
+$fields = "Venues.ID as 'ID', Venues.Name as 'Name',
+            Venues.Town as 'Town', Venues.Address as 'Address',
+            Venues.Archived as 'Archived',
+            Users.FirstName as 'fn', Users.LastName as 'ln'";
+
+            $innerjoin = "inner join Venues
+                        on Venues.ManagerID = Users.ID";
+    $query = "select $fields from Users $innerjoin";
  }
     $stmt = $mysqli->query($query);
     $sumofqueries = mysqli_num_rows($stmt);
@@ -88,6 +96,14 @@ $fields = "EventTypes.ID as 'ID', EventTypes.Name as 'Name',
             <h3>
                 <?php echo $venue['Name']; ?>
             </h3>
+            <?php
+                if($_SESSION['usr']->eveadmin == 2)
+                {
+                    echo "<p>";
+                    echo "Type Creator: {$venue['fn']} " . $venue['ln'];
+                    echo "</p>";
+                }
+             ?>
     <?php
     $dlink = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
     $elink = "edit_venue.php?vid={$venue['ID']}";
