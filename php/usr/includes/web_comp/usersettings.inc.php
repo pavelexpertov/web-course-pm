@@ -4,7 +4,8 @@
 	<?php
 	include_once "php/web_comp/button_element.func.php";
 	placeWideButton("Change your password", "usr_settings.php?pwd=");
-	placeWideButton("Change your details", "usr_settings.php?usrinfo=");
+	if($_SESSION['usr']->eveadmin != 2)
+		placeWideButton("Change your details", "usr_settings.php?usrinfo=");
 	/*if($_SESSION['usr']->eveadmin != 2)
 	{
 	if($_SESSION['usr']->eveadmin)
