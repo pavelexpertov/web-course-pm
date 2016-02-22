@@ -9,12 +9,12 @@ foreach($listOfIncludes as $include)
 if($_SESSION['usr']->eveadmin)
 {
     $query = "update Users set EventAdmin = 0 where ID = ?";
-    $_SESSION['usr']->eveadmin = false;
+    $_SESSION['usr']->eveadmin = 0;
 }
 else
 {
     $query = "update Users set EventAdmin = 1 where ID = ?";
-    $_SESSION['usr']->eveadmin = true;
+    $_SESSION['usr']->eveadmin = 1;
 }
 
 $stmt = $mysqli->prepare($query);

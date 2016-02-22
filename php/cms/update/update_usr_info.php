@@ -53,12 +53,12 @@ if($stmt == false)
 }
 if(isset($bio_cbx))
 {
-    $_SESSION['usr']->eveadmin = true;
+    $_SESSION['usr']->eveadmin = 1;
     $eveadmin = 1;
 }
 else
 {
-    $_SESSION['usr']->eveadmin = false;
+    $_SESSION['usr']->eveadmin = 0;
     $eveadmin = 0;
 }
 

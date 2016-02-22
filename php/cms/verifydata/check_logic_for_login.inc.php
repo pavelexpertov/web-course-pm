@@ -96,9 +96,9 @@ $msg = "Unfortunately incorrect username or password. Try again.";
         $userobj->usrname = $usrname2;
         $userobj->usrpwd = $usrpwd2;
         if($eveadm == 0)
-            $userobj->eveadmin = false;
+            $userobj->eveadmin = 0;
         else
-            $userobj->eveadmin = true;
+            $userobj->eveadmin = 1;
         $_SESSION['usr'] = $userobj;
         header("Location: ../../../index.php");
         exit();
