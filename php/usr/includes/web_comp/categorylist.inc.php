@@ -15,7 +15,16 @@
  }
     else
     {
-    $query = "select ID, Name, Archived from EventTypes";
+    //$query = "select ID, Name, Archived from EventTypes";
+$fields = "EventTypes.ID as 'ID', EventTypes.Name as 'Name',
+            EventTypes.Archived as 'Archived',
+            Users.FirstName as 'fn', Users.LastName as 'ln'";
+
+            $innerjoin = "inner join EventTypes
+                        on EventTypes.ManagerID = Users.ID";
+    $query = "select $fields from Users $innerjoin";
+
+
  }
     $stmt = $mysqli->query($query);
     $sumofqueries = mysqli_num_rows($stmt);
@@ -29,6 +38,14 @@
                     <?php echo $venue['Name']; ?>
                 </a>
             </h3>
+            <?php
+                if($_SESSION['usr']->eveadmin == 2)
+                {
+                    echo "<p>";
+                    echo "Type Creator: {$venue['fn']} " . $venue['ln'];
+                    echo "</p>";
+                }
+             ?>
             <?php
     $elink = "edit_event_type.php?etid={$venue['ID']}";
     $dlink = "php/cms/delete/delete_event_type.inc.php?etid={$venue['ID']}";
