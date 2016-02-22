@@ -17,7 +17,7 @@
     }
     else {
     $query = "select eveid, evename, date, stime,
-                ftime, etypename
+                ftime, etypename, managerln, managerfn
                 from search_n_event_view2";
     }
     $stmt = $mysqli->query($query);
@@ -36,6 +36,14 @@
                 <li>Start Time: <?php echo truncateTime($event['stime']); ?> </li>
                 <li>Finish Time: <?php echo truncateTime($event['ftime']); ?> </li>
                 <li>Type Of Event: <?php echo $event['etypename']; ?> </li>
+                <?php
+                    if($_SESSION['usr']->eveadmin == 2)
+                    {
+                        $fn = $event['managerfn'];
+                        $ln = $event['managerln'];
+                        echo "<li>Event Manager: $fn $ln</li>";
+                    }
+                 ?>
             </ul>
             <?php
                 $elink = "edit_createdevent.php?eid={$event['eveid']}";
