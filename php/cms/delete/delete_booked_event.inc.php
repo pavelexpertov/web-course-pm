@@ -17,6 +17,8 @@ include '../../cms/vefifydata/check_for_false_vars.inc.php';
 //--Just assign 1 to booked event's Archived and that's it.
 //--Return user back to where he came from
 
+if($_SESSION['usr']->eveadmin != 2)
+{
 $query = "update BookedEvents set archived = 1
           where ID = ? and userid = ?";
 
@@ -29,6 +31,22 @@ if($stmt == false)
 $stmt->bind_param("ii", $eveid, $_SESSION['usr']->id);
 $stmt->execute();
 $stmt->close();
+}
+else
+{
+$query = "update BookedEvents set archived = 1
+          where ID = ?";
+
+$stmt = $mysqli->prepare($query);
+if($stmt == false)
+{
+    echo "Ooop an error has happened at prepare statement line";
+    exit();
+}
+$stmt->bind_param("i", $eveid);
+$stmt->execute();
+$stmt->close();
+}
 //Return the user to the userpage
 header("Location: {$_SERVER['HTTP_REFERER']}");
 exit();
