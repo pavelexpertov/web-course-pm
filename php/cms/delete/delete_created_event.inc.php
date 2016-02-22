@@ -21,6 +21,8 @@ $eveid = checkInt($_GET['eid']);
 $listOfVars = array($eveid);
 include "../../cms/verifydata/check_for_false_vars.inc.php";
 
+if($_SESSION['usr']->eveadmin != 2)
+{
 $query = "update Events set Archived = 1
           where EManagerID = ? and ID = ?";
 
@@ -33,6 +35,22 @@ if($stmt == false)
 $stmt->bind_param("ii", $_SESSION['usr']->id, $eveid);
 $stmt->execute();
 $stmt->close();
+}
+else
+{
+$query = "update Events set Archived = 1
+          where ID = ?";
+
+$stmt = $mysqli->prepare($query);
+if($stmt == false)
+{
+    echo "Ooop an error has happened at prepare statement line";
+    exit();
+}
+$stmt->bind_param("i", $eveid);
+$stmt->execute();
+$stmt->close();
+}
 //Return the user to the userpage
 header("Location: {$_SERVER['HTTP_REFERER']}");
 exit();
