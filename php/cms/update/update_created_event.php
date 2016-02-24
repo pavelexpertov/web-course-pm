@@ -30,6 +30,8 @@
       exit();
   }
 
+  if($_SESSION['usr']->eveadmin != 2)
+  {
   $columns = "Name = ?, Description = ?,
               Date = ?, StartTime = ?, FinishTime = ?,
               ConfType = ?, VenueID = ?";
@@ -48,6 +50,28 @@
                     $_SESSION['usr']->id, $eveid);
   $stmt->execute();
   $stmt->close();
+  }
+  else
+  {
+  $columns = "Name = ?, Description = ?,
+              Date = ?, StartTime = ?, FinishTime = ?,
+              ConfType = ?, VenueID = ?";
+  $query = "update Events set $columns
+            where ID = ?";
+
+  $stmt = $mysqli->prepare($query);
+  if($stmt == false)
+  {
+      echo "Ooop an error has happened at prepare statement line";
+      exit();
+  }
+  $stmt->bind_param("sssssiii", $evename, $descr,
+                    $date, $stime, $ftime,
+                    $evetypeid, $venueid,
+                    $eveid);
+  $stmt->execute();
+  $stmt->close();
+  }
   //Return the user to the userpage
   header("Location: ../../../usr_page.php");
   exit();

@@ -17,6 +17,7 @@ if(isset($_SESSION['em-err']))
     unset($_SESSION['em-err']);
 }
 
+
 $fname = checkString($_POST['fname'], 25);
 $lname = checkString($_POST['lname'], 25);
 $job = checkString($_POST['job'], 25);
@@ -130,8 +131,10 @@ else //If it's just the user
 }
 
 //AUTHENTICATION LOGIC
-/*$code = "";
-for($i = 0; $i < 6; $i++)
+$code = "";
+$num = mt_rand(2, 9);
+$code = $code . $num;
+for($i = 0; $i < 5; $i++)
 {
     $num = mt_rand(0, 9);
     $code = $code . $num;
@@ -147,7 +150,9 @@ if($q == false)
 }
 $q->bind_param("si", $usrname, $code);
 $q->execute();
-$q->close();*/
+$q->close();
+/*email($email, "Code for authorisation", "Your code for autherisation is $code\nUse your
+        username and password to login on login page and then you will get prompted to enter the provided code");*/
 header("Location: {$_SERVER['HTTP_REFERER']}");
 header("Location: ../../../index.php");
  ?>

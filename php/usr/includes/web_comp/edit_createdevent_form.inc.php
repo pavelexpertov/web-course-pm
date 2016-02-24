@@ -77,10 +77,10 @@
       }
       ?>
       <label>Event Type</label>
-      <?php placeDDEventTypes("evetype"); ?>
+      <?php placeDDEventTypes("evetype", $evetype); ?>
       <br>
       <label>Venue</label>
-      <?php placeDDVenues("venueid"); ?>
+      <?php placeDDVenues("venueid", $venueid); ?>
       <br>
       <input type="hidden" name="eid" id="eid" value="<?php echo $eveid; ?>">
       <input type="submit" value="Save changes">

@@ -17,6 +17,10 @@ $("#login-form").validate({
             required: true,
             maxlength: 15
             //pwdRegex: true
+        },
+        code:{
+            required: true,
+            maxlength: 10
         }
     }
 })

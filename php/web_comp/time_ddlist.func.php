@@ -10,7 +10,7 @@ function placeDDTime($ddname, $selectedTime = false)
     //Generate a list of times
     //time list
     $timeList = array();
-    for($hour = 0; $hour < 24; $hour++)
+    for($hour = 8; $hour < 24; $hour++)
     {
         //String version of hour
         $shour = "";

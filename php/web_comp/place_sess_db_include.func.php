@@ -24,7 +24,7 @@
 
         $listIncludes[] = $sesspath;
         $listIncludes[] = $dbpath;
-        $listIncludes[] = $errpath;
+        //$listIncludes[] = $errpath;
         $listIncludes[] = $convertdate;
         $listIncludes[] = $truncatetime;
         $listIncludes[] = $validfuncs;

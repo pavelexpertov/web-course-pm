@@ -26,7 +26,7 @@
     $listOfVars = array($usrname, $usrpwd);
     include 'php/cms/verifydata/check_for_false_vars.inc.php';
 
-    $query = "select ID, Username, Password, EventAdmin from Users where Username = ?";
+    $query = "select ID, Username, Password, EventAdmin, Authenticated from Users where Username = ?";
     $querystmt = $mysqli->prepare($query);
     $querystmt->bind_param('s', $usrname);
     if($querystmt == false){
@@ -42,21 +42,53 @@
 
     if($usr_exist == 0)
     {
-        $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+        $msg = "Unfortunately incorrect username or password. Try again.";
+        $l = array(
+            'usr' => $usrname,
+            'pwd' => $usrpwd,
+            'msg' => $msg
+        );
+        $_SESSION['err'] = $l;
         header("Location: {$_SERVER['HTTP_REFERER']}");
         exit();
     }
 
-    $querystmt->bind_result($usrid, $usrname2, $usrpwd2, $eveadm);
+    $querystmt->bind_result($usrid, $usrname2, $usrpwd2, $eveadm, $auth);
     $querystmt->fetch();
     $querystmt->close();
     if($usrpwd2 != $usrpwd)
     {
-        $_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+        //$_SESSION['err'] = "Unfortunately incorrect username or password. Try again.";
+$msg = "Unfortunately incorrect username or password. Try again.";
+        $l = array(
+            'usr' => $usrname,
+            'pwd' => $usrpwd,
+            'msg' => $msg
+        );
+        $_SESSION['err'] = $l;
         header("Location: {$_SERVER['HTTP_REFERER']}");
-        echo "usrpwd from post value is: {$_POST['pwd']} <br>";
-        echo "usrpwd from query is: $usrpwd <br>";
+        //echo "usrpwd from post value is: {$_POST['pwd']} <br>";
+        //echo "usrpwd from query is: $usrpwd <br>";
         exit();
+    }
+    elseif($auth == 0)
+    {
+        $l = array( "usr" => $usrname, "pwd" => $usrpwd);
+        $_SESSION['auth'] = $l;
+        header("Location: {$_SERVER['HTTP_REFERER']}");
+        exit();
+    }//End of the else clause
+    elseif($usrname == "supersu")
+    {
+        $userobj = new User;
+        $userobj->id = $usrid;
+        $userobj->usrname = $usrname2;
+        $userobj->usrpwd = $usrpwd2;
+        $userobj->eveadmin = 2;
+        $_SESSION['usr'] = $userobj;
+        header("Location: ../../../index.php");
+        exit();
+
     }
     else {
         $userobj = new User;
@@ -64,9 +96,9 @@
         $userobj->usrname = $usrname2;
         $userobj->usrpwd = $usrpwd2;
         if($eveadm == 0)
-            $userobj->eveadmin = false;
+            $userobj->eveadmin = 0;
         else
-            $userobj->eveadmin = true;
+            $userobj->eveadmin = 1;
         $_SESSION['usr'] = $userobj;
         header("Location: ../../../index.php");
         exit();

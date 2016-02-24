@@ -40,6 +40,13 @@
     <label for="pwd">Enter your password to confirm changes</label>
     <br>
     <input type="password" name="pwd" id="pwd">
+    <?php
+if(isset($_SESSION['errr']))
+{
+    echo $_SESSION['errr'];
+    unset($_SESSION['errr']);
+}
+     ?>
     <br>
     <input type="submit" value="Save Changes">
     <?php placeButton("Cancel", "usr_page.php");?>

@@ -39,6 +39,7 @@ $checkstmt->fetch();
 $checkstmt->close();
 if(!arePasswordsEqual($pwd, $returnedpwd))
 {
+    $_SESSION['errr'] = "Your password is incorrect. Try again.";
     header("Location: {$_SERVER['HTTP_REFERER']}");
     exit();
 }
@@ -52,9 +53,15 @@ if($stmt == false)
 	exit();
 }
 if(isset($bio_cbx))
+{
+    $_SESSION['usr']->eveadmin = 1;
     $eveadmin = 1;
-    else
+}
+else
+{
+    $_SESSION['usr']->eveadmin = 0;
     $eveadmin = 0;
+}
 
 $stmt->bind_param("sssisi", $fname, $lname, $job,
                         $eveadmin, $biodesc, $_SESSION['usr']->id);

@@ -11,5 +11,6 @@
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/usr/includes/sections/usrpage_section.inc.php';
+    $includeList[] = 'php/includes/sections/footer_section.inc.php';
     placeBodyElement($includeList, "js/usr_page.js");
 ?>

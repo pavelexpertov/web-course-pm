@@ -9,5 +9,6 @@
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/includes/sections/speaker_info_section.inc.php';
+    $includeList[] = 'php/includes/sections/footer_section.inc.php';
     placeBodyElement($includeList);
 ?>

@@ -9,3 +9,13 @@
 
 <h4>List of POST variables</h4>
 <?php print_r($_POST); ?>
+
+<h4>List of USR variables</h4>
+<?php
+if(isset($_SESSION['usr']))
+    var_dump($_SESSION);
+/*if(isset($_SESSION['usr']))
+{
+    echo "name: " . $_SESSION['usr']->usr
+}*/
+?>

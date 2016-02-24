@@ -7,9 +7,10 @@
     //Adding head element
     include 'php/web_comp/head_element.func.php';
     include 'php/web_comp/body_element.func.php';
-    placeHeadElement("User Account Page");
+    placeHeadElement("Edit Venue");
 
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/usr/includes/sections/edit_venue_section.inc.php';
+    $includeList[] = 'php/includes/sections/footer_section.inc.php';
     placeBodyElement($includeList, "js/create_venue.js");
 ?>

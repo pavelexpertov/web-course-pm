@@ -8,8 +8,24 @@
     //2. List of Venues
 
     //Printing a Event Types list
+    if($_SESSION['usr']->eveadmin != 2)
+    {
     $query = "select ID, Name, Archived from EventTypes
      where ManagerID = {$_SESSION['usr']->id}";
+ }
+    else
+    {
+    //$query = "select ID, Name, Archived from EventTypes";
+$fields = "EventTypes.ID as 'ID', EventTypes.Name as 'Name',
+            EventTypes.Archived as 'Archived',
+            Users.FirstName as 'fn', Users.LastName as 'ln'";
+
+            $innerjoin = "inner join EventTypes
+                        on EventTypes.ManagerID = Users.ID";
+    $query = "select $fields from Users $innerjoin";
+
+
+ }
     $stmt = $mysqli->query($query);
     $sumofqueries = mysqli_num_rows($stmt);
     if($sumofqueries > 0)
@@ -22,6 +38,14 @@
                     <?php echo $venue['Name']; ?>
                 </a>
             </h3>
+            <?php
+                if($_SESSION['usr']->eveadmin == 2)
+                {
+                    echo "<p>";
+                    echo "Type Creator: {$venue['fn']} " . $venue['ln'];
+                    echo "</p>";
+                }
+             ?>
             <?php
     $elink = "edit_event_type.php?etid={$venue['ID']}";
     $dlink = "php/cms/delete/delete_event_type.inc.php?etid={$venue['ID']}";
@@ -45,8 +69,23 @@
 <?php
 
     //Printing a Venue Types list
+    if($_SESSION['usr']->eveadmin != 2)
+    {
     $query = "select ID, Name, Town, Address, Archived from Venues
      where ManagerID = {$_SESSION['usr']->id}";
+ }
+    else
+    {
+    //$query = "select ID, Name, Town, Address, Archived from Venues";
+$fields = "Venues.ID as 'ID', Venues.Name as 'Name',
+            Venues.Town as 'Town', Venues.Address as 'Address',
+            Venues.Archived as 'Archived',
+            Users.FirstName as 'fn', Users.LastName as 'ln'";
+
+            $innerjoin = "inner join Venues
+                        on Venues.ManagerID = Users.ID";
+    $query = "select $fields from Users $innerjoin";
+ }
     $stmt = $mysqli->query($query);
     $sumofqueries = mysqli_num_rows($stmt);
     if($sumofqueries > 0)
@@ -57,6 +96,14 @@
             <h3>
                 <?php echo $venue['Name']; ?>
             </h3>
+            <?php
+                if($_SESSION['usr']->eveadmin == 2)
+                {
+                    echo "<p>";
+                    echo "Type Creator: {$venue['fn']} " . $venue['ln'];
+                    echo "</p>";
+                }
+             ?>
     <?php
     $dlink = "php/cms/delete/delete_venue.inc.php?vid={$venue['ID']}";
     $elink = "edit_venue.php?vid={$venue['ID']}";

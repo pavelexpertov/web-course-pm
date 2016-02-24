@@ -8,5 +8,6 @@
     //Adding body element
     $includeList[] = 'php/includes/sections/header_section.inc.php';
     $includeList[] = 'php/includes/sections/searchpage_section.php';
+    $includeList[] = 'php/includes/sections/footer_section.inc.php';
     placeBodyElement($includeList, "js/search.js");
  ?>

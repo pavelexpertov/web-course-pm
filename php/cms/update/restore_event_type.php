@@ -10,16 +10,32 @@ $etid = checkInt($_GET['etid']);
 $listOfVars = array($etid);
 include '../../cms/verifydata/check_for_false_vars.inc.php';
 
-$query = "update EventTypes set Archived = 0
-	  where ID = ? and ManagerID = ?";
-$stmt = $mysqli->prepare($query);
-if($stmt == false)
+if($_SESSION['usr']->eveadmin != 2)
 {
-	echo "Ooops an error occured while restoring";
-	exit();
+    $query = "update EventTypes set Archived = 0
+    	  where ID = ? and ManagerID = ?";
+    $stmt = $mysqli->prepare($query);
+    if($stmt == false)
+    {
+    	echo "Ooops an error occured while restoring";
+    	exit();
+    }
+    $stmt->bind_param("ii", $etid, $_SESSION['usr']->id);
+    $stmt->execute();
 }
-$stmt->bind_param("ii", $etid, $_SESSION['usr']->id);
-$stmt->execute();
+else
+{
+    $query = "update EventTypes set Archived = 0
+        	  where ID = ?";
+    $stmt = $mysqli->prepare($query);
+    if($stmt == false)
+    {
+    	echo "Ooops an error occured while restoring";
+    	exit();
+    }
+    $stmt->bind_param("i", $etid);
+    $stmt->execute();
+}
 header("Location: ../../../usr_page.php");
 exit();
 

@@ -16,6 +16,8 @@
         $simpleSearch = checkString($_GET['simplesearch']);
     if(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
         $advancedSearch = checkString($_GET['adv-search']);
+    else
+        $advancedSearch = "NULL321";
     if(isset($_GET['date']) && $_GET['date'] != "")
         $date = checkDateF($_GET['date']);
     if(isset($_GET['venueid']) && $_GET['venueid'] != "all")
@@ -70,7 +72,7 @@
 
         // placeEventResult($resultEvents);
     }
-    elseif(isset($_GET['adv-search']) && $_GET['adv-search'] != "")
+    elseif(isset($_GET['adv-search']))
     {//If complicated search has been used
         //Logic of figuring out what the stuff is
         $listOfCond = array();
@@ -79,7 +81,7 @@
         if(isset($eveType))
             $listOfCond[] = "ConfType = $eveType";
         if(isset($date))
-            $listOfCond[] = "Date = $date";
+            $listOfCond[] = "Date = '$date'";
 
         $stringofcond = "";
         if(count($listOfCond) > 0)
@@ -88,12 +90,13 @@
             $stringofcond = "and " . $stringofcond;
         }
 
-        //echo $stringofcond;
+        //echo $stringofcond . "<br>";
         //Setting up query
         $query = "select $fields from $view
                   where eveid in (select ID from Events
                    where (Name like ? or Description like ?) $stringofcond)";
         //echo $query . "<br>";
+        //exit();
         $resultEvents = $mysqli->prepare($query);
         if($resultEvents == false)
         {
@@ -102,10 +105,14 @@
             exit();
         }
 
-        $stringQuery = '%' . $advancedSearch . '%';
+        if($advancedSearch != "NULL321")
+          $stringQuery = '%' . $advancedSearch . '%';
+        else
+          $stringQuery = "%%";
+
         $resultEvents->bind_param("ss", $stringQuery, $stringQuery);
         $resultEvents->execute();
-
+//NULL321
 
     }
     else

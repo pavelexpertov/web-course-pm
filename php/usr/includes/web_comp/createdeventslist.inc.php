@@ -8,10 +8,18 @@
     include 'php/web_comp/button_element.func.php';
     //The purpose of the page is to print events created by the registered user
     //Create a query
+    if($_SESSION['usr']->eveadmin != 2)
+    {
     $query = "select eveid, evename, date, stime,
                 ftime, etypename
                 from search_n_event_view2
                 where managerid = {$_SESSION['usr']->id}";
+    }
+    else {
+    $query = "select eveid, evename, date, stime,
+                ftime, etypename, managerln, managerfn
+                from search_n_event_view2";
+    }
     $stmt = $mysqli->query($query);
     //Getting a number of returned queries
     $numberOfQueries = mysqli_num_rows($stmt);
@@ -28,6 +36,14 @@
                 <li>Start Time: <?php echo truncateTime($event['stime']); ?> </li>
                 <li>Finish Time: <?php echo truncateTime($event['ftime']); ?> </li>
                 <li>Type Of Event: <?php echo $event['etypename']; ?> </li>
+                <?php
+                    if($_SESSION['usr']->eveadmin == 2)
+                    {
+                        $fn = $event['managerfn'];
+                        $ln = $event['managerln'];
+                        echo "<li>Event Manager: $fn $ln</li>";
+                    }
+                 ?>
             </ul>
             <?php
                 $elink = "edit_createdevent.php?eid={$event['eveid']}";

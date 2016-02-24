@@ -8,6 +8,13 @@ include 'php/web_comp/button_element.func.php';
     <legend>Change your password</legend>
     <label>Your current password</label>
     <input type="password" id="oldpwd" name="oldpwd">
+    <?php
+    if(isset($_SESSION['errr']))
+    {
+        echo $_SESSION['errr'];
+        unset($_SESSION['errr']);
+    }
+    ?>
     <br>
     <label>New password</label>
     <input type="password" id="newpwd" name="newpwd">
